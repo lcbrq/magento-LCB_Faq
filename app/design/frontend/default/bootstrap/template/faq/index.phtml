@@ -1,0 +1,61 @@
+<?php $categories = $this->getCategories(); ?>
+<?php $locale = Mage::app()->getLocale()->getLocaleCode(); ?>
+
+<div class="background-image">
+    <section id="header">
+        <div class="container">
+            <div class="row product-header">
+                <div class="col-md-12">
+                    <h1><?php echo $this->__("FAQ");?></h1>
+                    <p>
+                       <?php echo $this->__("Do you have any questions?"); ?>
+                    </p>
+                </div>
+            </div>
+            <div class="row summary hidden">
+                <?php foreach ($categories as $category): ?>
+                    <?php $collection = $category->getCollection(); ?>
+                    <?php if (count($collection)): ?>
+                        <div class="col-md-12">
+                            <span class="title"><?php echo $this->__($category->getName()); ?></span>
+                            <ol>
+                                <?php foreach ($collection as $set): ?>
+                                    <li data-panel-link="<?php echo $category->getCode(); ?>-<?php echo $set->getId(); ?>">
+                                        <?php echo $set->getQuestion(); ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ol>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+
+            <?php foreach ($categories as $category): ?>
+                <?php $collection = $category->getCollection(); ?>
+                <?php if (count($collection)): ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2><?php echo $this->__($category->getName()); ?></h2>
+                            <?php foreach ($category->getCollection() as $set): ?>
+                                <div class="panel panel-default" data-panel="<?php echo $category->getCode(); ?>-<?php echo $set->getId(); ?>">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><?php echo $set->getQuestion(); ?></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p><?php echo $set->getAnswer(); ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+        </div>
+    </section><!-- /#faq -->
+</div>

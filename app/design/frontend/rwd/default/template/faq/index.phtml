@@ -1,0 +1,38 @@
+<?php $categories = $this->getCategories(); ?>
+<?php $locale = Mage::app()->getLocale()->getLocaleCode(); ?>
+
+<section id="header">
+    <div class="container">
+        <div class="row product-header">
+            <div class="col-md-12">
+                <h1><?php echo $this->__("FAQ"); ?></h1>
+                <h2 class="legend">
+                    <?php echo $this->__("Do you have any questions?"); ?>
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq">
+    <div class="container">
+
+        <?php foreach ($categories as $category): ?>
+            <?php $collection = $category->getCollection(); ?>
+            <?php if (count($collection)): ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="legend"><?php echo $this->__($category->getName()); ?></h3>
+                        <?php foreach ($category->getCollection() as $set): ?>
+                            <div class="panel panel-default" data-panel="<?php echo $category->getCode(); ?>-<?php echo $set->getId(); ?>">
+                                <p><?php echo $set->getQuestion(); ?></p>
+                                <p><?php echo $set->getAnswer(); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+    </div>
+</section>
