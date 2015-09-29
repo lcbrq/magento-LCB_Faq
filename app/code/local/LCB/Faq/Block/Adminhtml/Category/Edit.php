@@ -7,17 +7,16 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq_Edit extends Mage_Adminhtml_Block_Widget_Form_Container {
+class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_Form_Container {
 
     public function __construct()
     {
-
         parent::__construct();
         $this->_objectId = "id";
         $this->_blockGroup = "faq";
-        $this->_controller = "adminhtml_faq";
-        $this->_updateButton("save", "label", Mage::helper("faq")->__("Save Item"));
-        $this->_updateButton("delete", "label", Mage::helper("faq")->__("Delete Item"));
+        $this->_controller = "adminhtml_category";
+        $this->_updateButton("save", "label", Mage::helper("faq")->__("Save Category"));
+        $this->_updateButton("delete", "label", Mage::helper("faq")->__("Delete Category"));
 
         $this->_addButton("saveandcontinue", array(
             "label" => Mage::helper("faq")->__("Save And Continue Edit"),
@@ -28,9 +27,9 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit extends Mage_Adminhtml_Block_Widget_Form_
 
 
         $this->_formScripts[] = "
-           function saveAndContinueEdit(){
+            function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');
-           }";
+            }";
     }
 
     public function getHeaderText()

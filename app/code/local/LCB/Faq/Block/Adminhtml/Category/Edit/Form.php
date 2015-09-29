@@ -7,7 +7,7 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq_Edit_Form extends Mage_Adminhtml_Block_Widget_Form {
+class LCB_Faq_Block_Adminhtml_Category_Edit_Form extends Mage_Adminhtml_Block_Widget_Form {
 
     protected function _prepareForm()
     {

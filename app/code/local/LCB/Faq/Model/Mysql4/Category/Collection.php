@@ -7,11 +7,11 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Model_Mysql4_Faq_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract {
+class LCB_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract {
 
     public function _construct()
     {
-        $this->_init("faq/faq");
+        $this->_init("faq/category");
     }
 
     public function addStoreFilter($storeId)

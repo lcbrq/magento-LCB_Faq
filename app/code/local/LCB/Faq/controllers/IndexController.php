@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Magento FAQ
+ * Easy FAQ management
  *
  * @category   LCB
  * @package    LCB_Faq
- * @author     Tomasz Gregorczyk <tom@leftcurlybracket.com>
+ * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
 class LCB_Faq_IndexController extends Mage_Core_Controller_Front_Action {
 

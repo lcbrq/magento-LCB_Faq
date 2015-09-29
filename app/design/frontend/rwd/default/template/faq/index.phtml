@@ -17,13 +17,13 @@
 <section id="faq">
     <div class="container">
 
-        <?php foreach ($categories as $category): ?>
-            <?php $collection = $category->getCollection(); ?>
-            <?php if (count($collection)): ?>
+        <?php foreach ($categories as $category):
+             $collection = $category->getFaqCollection();
+             if (count($collection)): ?>
                 <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="legend"><?php echo $this->__($category->getName()); ?></h3>
-                        <?php foreach ($category->getCollection() as $set): ?>
+                    <div class="fieldset">
+                        <h2><?php echo $this->__($category->getName()); ?></h2>
+                        <?php foreach ($collection as $set): ?>
                             <div class="panel panel-default" data-panel="<?php echo $category->getCode(); ?>-<?php echo $set->getId(); ?>">
                                 <p><?php echo $set->getQuestion(); ?></p>
                                 <p><?php echo $set->getAnswer(); ?></p>

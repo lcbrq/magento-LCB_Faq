@@ -5,4 +5,9 @@
             <block type="faq/adminhtml_faq" name="faq" />
         </reference>
     </admin_faq_adminhtml_faq_index>
+    <admin_faq_adminhtml_categories_index>
+        <reference name="content">
+            <block type="faq/adminhtml_category" name="faq_categories" />
+        </reference>
+    </admin_faq_adminhtml_categories_index>
 </layout>

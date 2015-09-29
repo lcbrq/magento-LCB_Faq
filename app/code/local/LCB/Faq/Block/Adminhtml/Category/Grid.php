@@ -7,12 +7,12 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid {
+class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_Grid {
 
     public function __construct()
     {
         parent::__construct();
-        $this->setId("faqGrid");
+        $this->setId("categoryGrid");
         $this->setDefaultSort("id");
         $this->setDefaultDir("DESC");
         $this->setSaveParametersInSession(true);
@@ -20,7 +20,7 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
 
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel("faq/faq")->getCollection();
+        $collection = Mage::getModel("faq/category")->getCollection();
         $this->setCollection($collection);
         parent::_prepareCollection();
         foreach ($collection as $link) {
@@ -51,21 +51,9 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
             "index" => "id",
         ));
 
-        $this->addColumn("question", array(
-            "header" => Mage::helper("faq")->__("Question"),
-            "index" => "question",
-        ));
-
-        $this->addColumn("answer", array(
-            "header" => Mage::helper("faq")->__("Answer"),
-            "index" => "answer",
-        ));
-
-        $this->addColumn('category', array(
-            'header' => Mage::helper('faq')->__('Category'),
-            'index' => 'category',
-            'type' => 'options',
-            'options' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesOptions(),
+        $this->addColumn("name", array(
+            "header" => Mage::helper("faq")->__("Name"),
+            "index" => "name",
         ));
 
         if (!Mage::app()->isSingleStoreMode()) {
@@ -96,26 +84,12 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
         $this->setMassactionIdField('id');
         $this->getMassactionBlock()->setFormFieldName('ids');
         $this->getMassactionBlock()->setUseSelectAll(true);
-        $this->getMassactionBlock()->addItem('remove_faq', array(
-            'label' => Mage::helper('faq')->__('Remove Faq'),
+        $this->getMassactionBlock()->addItem('remove_faq_categories', array(
+            'label' => Mage::helper('faq')->__('Remove Categories'),
             'url' => $this->getUrl('*/adminhtml_faq/massRemove'),
             'confirm' => Mage::helper('faq')->__('Are you sure?')
         ));
         return $this;
-    }
-
-    static public function getCategoriesOptions()
-    {
-        return Mage::getModel('faq/category')->getOptionArray();
-    }
-
-    static public function getCategoriesValues()
-    {
-        $data_array = array();
-        foreach (LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesOptions() as $k => $v) {
-            $data_array[] = array('value' => $k, 'label' => $v);
-        }
-        return($data_array);
     }
 
 }
