@@ -7,7 +7,7 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
+class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Controller_Action {
 
     protected function _initAction()
     {
@@ -18,7 +18,7 @@ class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
     public function indexAction()
     {
         $this->_title($this->__("Faq"));
-        $this->_title($this->__("Manage FAQ Categories"));
+        $this->_title($this->__("Manager Faq"));
 
         $this->_initAction();
         $this->renderLayout();
@@ -31,18 +31,18 @@ class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
         $this->_title($this->__("Edit Item"));
 
         $id = $this->getRequest()->getParam("id");
-        $model = Mage::getModel("faq/faq")->load($id);
+        $model = Mage::getModel("faq/category")->load($id);
         if ($model->getId()) {
             Mage::register("faq_data", $model);
             $this->loadLayout();
             $this->_setActiveMenu("faq/faq");
-            $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
-            $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq Description"), Mage::helper("adminhtml")->__("Faq Description"));
+            $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Category Manager"), Mage::helper("adminhtml")->__("Category Manager"));
+            $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Category Description"), Mage::helper("adminhtml")->__("Category Description"));
             $this->getLayout()->getBlock("head")->setCanLoadExtJs(true);
-            $this->_addContent($this->getLayout()->createBlock("faq/adminhtml_faq_edit"))->_addLeft($this->getLayout()->createBlock("faq/adminhtml_faq_edit_tabs"));
+            $this->_addContent($this->getLayout()->createBlock("faq/adminhtml_category_edit"))->_addLeft($this->getLayout()->createBlock("faq/adminhtml_category_edit_tabs"));
             $this->renderLayout();
         } else {
-            Mage::getSingleton("adminhtml/session")->addError(Mage::helper("faq")->__("Item does not exist."));
+            Mage::getSingleton("adminhtml/session")->addError(Mage::helper("faq")->__("Category does not exist."));
             $this->_redirect("*/*/");
         }
     }
@@ -50,12 +50,12 @@ class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
     public function newAction()
     {
 
-        $this->_title($this->__("Faq"));
-        $this->_title($this->__("Faq"));
-        $this->_title($this->__("New Item"));
+        $this->_title($this->__("Categories"));
+        $this->_title($this->__("Categories"));
+        $this->_title($this->__("New Category"));
 
         $id = $this->getRequest()->getParam("id");
-        $model = Mage::getModel("faq/faq")->load($id);
+        $model = Mage::getModel("faq/category")->load($id);
 
         $data = Mage::getSingleton("adminhtml/session")->getFormData(true);
         if (!empty($data)) {
@@ -65,15 +65,14 @@ class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
         Mage::register("faq_data", $model);
 
         $this->loadLayout();
-        $this->_setActiveMenu("faq/faq");
+        $this->_setActiveMenu("faq/category");
 
         $this->getLayout()->getBlock("head")->setCanLoadExtJs(true);
 
-        $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
-        $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq Description"), Mage::helper("adminhtml")->__("Faq Description"));
+        $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Category Manager"), Mage::helper("adminhtml")->__("Category Manager"));
+        $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Category Description"), Mage::helper("adminhtml")->__("Category Description"));
 
-
-        $this->_addContent($this->getLayout()->createBlock("faq/adminhtml_faq_edit"))->_addLeft($this->getLayout()->createBlock("faq/adminhtml_faq_edit_tabs"));
+        $this->_addContent($this->getLayout()->createBlock("faq/adminhtml_category_edit"))->_addLeft($this->getLayout()->createBlock("faq/adminhtml_category_edit_tabs"));
 
         $this->renderLayout();
     }
@@ -88,7 +87,6 @@ class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
 
             try {
 
-
                 if (isset($post_data['stores'])) {
                     if (in_array('0', $post_data['stores'])) {
                         $post_data['store_id'] = '0';
@@ -98,12 +96,12 @@ class LCB_Faq_Adminhtml_FaqController extends Mage_Adminhtml_Controller_Action {
                     unset($post_data['stores']);
                 }
 
-                $model = Mage::getModel("faq/faq")
+                $model = Mage::getModel("faq/category")
                         ->addData($post_data)
                         ->setId($this->getRequest()->getParam("id"))
                         ->save();
 
-                Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Faq was successfully saved"));
+                Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Category was successfully saved"));
                 Mage::getSingleton("adminhtml/session")->setFaqData(false);
 
                 if ($this->getRequest()->getParam("back")) {

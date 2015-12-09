@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_Faq>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </LCB_Faq>
     </modules>
     <frontend>
@@ -18,7 +18,7 @@
         <layout>
             <updates>
                 <faq>
-                    <file>faq.xml</file>
+                    <file>lcb_faq.xml</file>
                 </faq>
             </updates>
         </layout>
@@ -74,13 +74,13 @@
     </global>
     <admin>
         <routers>
-            <admin_faq>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>LCB_Faq</module>
-                    <frontName>admin_faq</frontName>
+                    <modules>
+                        <admin_faq before="Mage_Adminhtml">LCB_Faq_Adminhtml</admin_faq>
+                    </modules>
                 </args>
-            </admin_faq>
+            </adminhtml>
         </routers>
     </admin>
     <adminhtml>
@@ -94,12 +94,12 @@
                             <faq module="faq">
                                 <title>Questions and Answers</title>
                                 <sort_order>0</sort_order>
-                                <action>admin_faq/adminhtml_faq</action>
+                                <action>adminhtml/adminfaqfaq</action>
                             </faq>
                             <categories module="faq">
                                 <title>Categories</title>
                                 <sort_order>1</sort_order>
-                                <action>admin_faq/adminhtml_categories</action>
+                                <action>adminhtml/adminfaqcategories</action>
                             </categories>
                         </children>
                     </faq>
@@ -138,9 +138,18 @@
         <layout>
             <updates>
                 <faq>
-                    <file>faq.xml</file>
+                    <file>lcb_faq.xml</file>
                 </faq>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <translations>
+                    <files>
+                        <default>LCB_Faq.csv</default>
+                    </files>
+                </translations>
+            </modules>
+        </translate>
     </adminhtml>
 </config> 

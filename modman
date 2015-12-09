@@ -1,0 +1,7 @@
+app/code/local/LCB/Faq                                  app/code/local/LCB/Faq
+app/locale/pl_PL/LCB_Faq.csv                            app/locale/pl_PL/LCB_Faq.csv 
+app/design/adminhtml/default/default/layout/lcb_faq.xml app/design/adminhtml/default/default/layout/lcb_faq.xml
+app/design/frontend/base/default/layout/lcb_faq.xml     app/design/frontend/base/default/layout/lcb_faq.xml
+app/design/frontend/base/default/template/faq           app/design/frontend/base/default/template/faq
+app/design/frontend/rwd/default/template/faq            app/design/frontend/rwd/default/template/faq
+app/etc/modules/LCB_Faq.xml                             app/etc/modules/LCB_Faq.xml
