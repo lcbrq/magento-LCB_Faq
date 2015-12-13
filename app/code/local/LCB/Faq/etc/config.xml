@@ -144,11 +144,11 @@
         </layout>
         <translate>
             <modules>
-                <translations>
+                <lcb_faq>
                     <files>
                         <default>LCB_Faq.csv</default>
                     </files>
-                </translations>
+                </lcb_faq>
             </modules>
         </translate>
     </adminhtml>
