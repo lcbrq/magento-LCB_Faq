@@ -1,0 +1,10 @@
+{
+    "name": "lcbrq/magento-lcb_faq",
+    "description": "Frequently Asked Questions plugin for Magento with multistore support",
+    "type": "magento-module",
+    "license": "MIT",
+    "require": {},
+    "extra": {
+        "magento-root-dir":"./"
+    }
+}
