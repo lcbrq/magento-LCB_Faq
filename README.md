@@ -29,3 +29,12 @@ Frequently Asked Questions plugin for Magento with multistore support
 
 - Layout declaration fix
 - Fixes for SUPEE-6788 patch
+
+
+## [1.1.0]
+
+### Added
+
+- Composer
+- Backend logic for FAQ page contact form
+- Dutch translations
