@@ -18,4 +18,13 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
         return $categories;
     }
 
+    /**
+     * Get FAQ contact form POST action
+     * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
+     * @return string 
+     */
+    public function getFormAction(){
+    	return $this->getUrl('faq/index/email');
+    }
+
 }

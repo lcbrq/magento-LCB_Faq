@@ -33,4 +33,37 @@ class LCB_Faq_IndexController extends Mage_Core_Controller_Front_Action {
         $this->renderLayout();
     }
 
+    public function emailAction(){
+        $data = $this->getRequest()->getParams();
+
+        $storeName = Mage::getStoreConfig('trans_email/ident_general/name');
+        $storeEmail = Mage::getStoreConfig('trans_email/ident_general/email');
+
+        $customerEmail = $data['email'];
+
+        $emailTemplate = Mage::getModel('core/email_template')->loadDefault('lcb_faq_template');
+
+        $emailTemplate->setTemplateSubject($this->__('Contact'));
+
+        $emailTemplate->setSenderName($customerEmail);
+        $emailTemplate->setSenderEmail($storeEmail);
+
+        $emailTemplateVariables = array();
+
+        $emailTemplateVariables['firstname'] = $data['firstname'];
+        $emailTemplateVariables['telephone'] = $data['telephone'];
+        $emailTemplateVariables['email'] = $data['email'];
+        $emailTemplateVariables['order'] = $data['order'];
+        $emailTemplateVariables['comment'] = $data['comment'];
+
+        try {
+            $emailTemplate->send($storeEmail, null, $emailTemplateVariables); //send to store
+            $emailTemplate->send($customerEmail,null,$emailTemplateVariables); // send copy to customer
+            Mage::getSingleton('core/session')->addSuccess('Successfully Sent');
+        } catch (Exception $error) {
+            Mage::getSingleton('core/session')->addError($error->getMessage());
+        }
+        $this->_redirect('*/*/');
+    }
+
 }

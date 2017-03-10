@@ -71,6 +71,15 @@
                 </connection>
             </faq_read>
         </resources>
+	<template>
+            <email>
+                <lcb_faq_template module="faq">
+                    <label>Contact</label>
+                    <file>lcb_faq.html</file>
+                    <type>html</type>
+                </lcb_faq_template>
+            </email>
+        </template>
     </global>
     <admin>
         <routers>
