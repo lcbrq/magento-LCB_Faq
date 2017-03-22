@@ -56,6 +56,14 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
             "index" => "name",
         ));
 
+        $this->addColumn("parent_id", array(
+            "header" => Mage::helper("faq")->__("Parent category id"),
+            "align" => "right",
+            "width" => "50px",
+            "type" => "number",
+            "index" => "parent_id",
+        ));
+
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('store_id', array(
                 'header' => Mage::helper('faq')->__('Store View'),

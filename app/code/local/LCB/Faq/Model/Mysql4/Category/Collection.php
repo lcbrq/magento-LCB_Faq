@@ -23,4 +23,16 @@ class LCB_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql4_Co
         return $this;
     }
 
+    /**
+     * Get category childrens 
+     * @param  int $id
+     * @return $this
+     */
+    public function getChildrenCategories($id){ 
+        $this->addFieldToFilter('parent_id', array(
+            array('finset' => array($id))));
+
+        return $this;
+    }
+
 }

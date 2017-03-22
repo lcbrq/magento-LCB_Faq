@@ -27,4 +27,13 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
     	return $this->getUrl('faq/index/email');
     }
 
+    /**
+     * Get native magento contact form post action
+     * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
+     * @return string
+     */
+    public function getContactFormAction(){
+        return $this->getUrl('contacts/index/post');
+    }
+
 }

@@ -11,7 +11,6 @@ CREATE TABLE `{$this->getTable('lcb_faq_category')}` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-INSERT INTO `{$this->getTable('lcb_faq_category')}` VALUES (1, 'General', 0);
 
 SQLTEXT;
 

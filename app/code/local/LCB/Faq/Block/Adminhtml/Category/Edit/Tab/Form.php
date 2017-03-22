@@ -9,6 +9,24 @@
  */
 class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form {
 
+    /**
+     * Prepare values for parent category selection
+     * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
+     * @return array
+     */
+    protected function getValues(){
+
+        $result = array(
+            "NULL"=>' '
+            );
+        $collection = Mage::getModel("faq/category")->getCollection();
+        foreach ($collection as $category) {
+            $result[$category->getId()] = $category->getName();
+        }
+
+        return $result;
+    }
+
     protected function _prepareForm()
     {
 
@@ -20,6 +38,14 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $fieldset->addField("name", "text", array(
             "label" => Mage::helper("faq")->__("Name"),
             "name" => "name",
+        ));
+
+        $fieldset->addField("parent_id", "select", array(
+            "label" => Mage::helper("faq")->__("Parent Category"),
+            "name" => "parent_id",
+            "options"=>$this->getValues(),
+            "required"=>false,
+            "after_element_html"=>$this->__('Please select parent category if needed')
         ));
 
         if (!Mage::app()->isSingleStoreMode()) {
