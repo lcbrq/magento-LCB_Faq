@@ -19,7 +19,8 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $result = array(
             "NULL"=>' '
             );
-        $collection = Mage::getModel("faq/category")->getCollection();
+        $collection = Mage::getModel("faq/category")->getCollection()
+                ->addFieldToFilter('id', array('neq' => $this->getRequest()->getParam("id")));
         foreach ($collection as $category) {
             $result[$category->getId()] = $category->getName();
         }
@@ -43,9 +44,9 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $fieldset->addField("parent_id", "select", array(
             "label" => Mage::helper("faq")->__("Parent Category"),
             "name" => "parent_id",
-            "options"=>$this->getValues(),
-            "required"=>false,
-            "after_element_html"=>$this->__('Please select parent category if needed')
+            "options" => $this->getValues(),
+            "required" => false,
+            "after_element_html" => $this->__('Please select parent category if needed')
         ));
 
         if (!Mage::app()->isSingleStoreMode()) {

@@ -97,7 +97,7 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
         $this->getMassactionBlock()->setFormFieldName('ids');
         $this->getMassactionBlock()->setUseSelectAll(true);
         $this->getMassactionBlock()->addItem('remove_faq', array(
-            'label' => Mage::helper('faq')->__('Remove Faq'),
+            'label' => Mage::helper('faq')->__('Remove'),
             'url' => $this->getUrl('*/adminhtml_faq/massRemove'),
             'confirm' => Mage::helper('faq')->__('Are you sure?')
         ));

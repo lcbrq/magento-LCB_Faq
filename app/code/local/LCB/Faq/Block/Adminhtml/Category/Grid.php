@@ -57,7 +57,7 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
         ));
 
         $this->addColumn("parent_id", array(
-            "header" => Mage::helper("faq")->__("Parent category id"),
+            "header" => Mage::helper("faq")->__("Parent category Id"),
             "align" => "right",
             "width" => "50px",
             "type" => "number",
@@ -93,8 +93,8 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
         $this->getMassactionBlock()->setFormFieldName('ids');
         $this->getMassactionBlock()->setUseSelectAll(true);
         $this->getMassactionBlock()->addItem('remove_faq_categories', array(
-            'label' => Mage::helper('faq')->__('Remove Categories'),
-            'url' => $this->getUrl('*/adminhtml_faq/massRemove'),
+            'label' => Mage::helper('faq')->__('Remove'),
+            'url' => $this->getUrl('*/adminfaqcategories/massRemove'),
             'confirm' => Mage::helper('faq')->__('Are you sure?')
         ));
         return $this;

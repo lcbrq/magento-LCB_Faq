@@ -38,3 +38,13 @@ Frequently Asked Questions plugin for Magento with multistore support
 - Composer
 - Backend logic for FAQ page contact form
 - Dutch translations
+
+## [1.2.0]
+
+### Added
+
+- FAQ Category parent
+
+### Fixed
+
+- Mass FAQ category remove

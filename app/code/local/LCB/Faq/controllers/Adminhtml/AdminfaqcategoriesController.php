@@ -141,7 +141,7 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
         try {
             $ids = $this->getRequest()->getPost('ids', array());
             foreach ($ids as $id) {
-                $model = Mage::getModel("faq/faq");
+                $model = Mage::getModel("faq/category");
                 $model->setId($id)->delete();
             }
             Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Item(s) was successfully removed"));
