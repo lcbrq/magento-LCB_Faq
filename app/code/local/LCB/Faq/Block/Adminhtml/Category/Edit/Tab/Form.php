@@ -49,6 +49,13 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             "after_element_html" => $this->__('Please select parent category if needed')
         ));
 
+        $fieldset->addField("is_active", "select", array(
+            "label" => Mage::helper("faq")->__("Active"),
+            "name" => "is_active",
+            'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray()
+        ));
+
+        
         if (!Mage::app()->isSingleStoreMode()) {
             $fieldset->addField('store_id', 'multiselect', array(
                 'name' => 'stores[]',
@@ -63,7 +70,7 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
                 'value' => Mage::app()->getStore(true)->getId(),
             ));
         }
-
+        
         if (Mage::getSingleton("adminhtml/session")->getFaqData()) {
             $form->setValues(Mage::getSingleton("adminhtml/session")->getFaqData());
             Mage::getSingleton("adminhtml/session")->setFaqData(null);

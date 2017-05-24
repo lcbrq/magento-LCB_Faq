@@ -51,17 +51,24 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
             "index" => "id",
         ));
 
-        $this->addColumn("name", array(
-            "header" => Mage::helper("faq")->__("Name"),
-            "index" => "name",
-        ));
-
         $this->addColumn("parent_id", array(
             "header" => Mage::helper("faq")->__("Parent category Id"),
             "align" => "right",
             "width" => "50px",
             "type" => "number",
             "index" => "parent_id",
+        ));
+
+        $this->addColumn("name", array(
+            "header" => Mage::helper("faq")->__("Name"),
+            "index" => "name",
+        ));
+
+        $this->addColumn("is_active", array(
+            "header" => Mage::helper("faq")->__("Active"),
+            "index" => "is_active",
+            "type" => "options",
+            "options" => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray()
         ));
 
         if (!Mage::app()->isSingleStoreMode()) {

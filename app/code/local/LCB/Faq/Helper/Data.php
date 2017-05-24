@@ -16,4 +16,43 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract {
     public function makeSlug($string){
         return Mage::getModel('catalog/product_url')->formatUrlKey($string);
     }
+    
+    
+    /**
+     * Add new FAQ category
+     
+     * @param string $name
+     * @param string $url
+     * @param int $parentId
+     * @return LCB_Faq_Model_Category
+     */
+    public function addCategory($name, $identifier, $parentId = null)
+    {
+        $category = Mage::getModel('faq/category');
+        $category->setName($name);
+        $category->setIdentifier($identifier);
+        $category->setParentId($parentId);
+        $category->save();
+        return $category;
+    }
+
+    /**
+     * Add new FAQ Q&A set
+     * 
+     * @param string $question
+     * @param string $answer
+     * @param int $categoryId
+     * @return LCB_Faq_Model_Faq
+     */
+    public function addQA($question, $answer, $categoryId = null, $storeId = 0)
+    {
+        $set = Mage::getModel('faq/faq');
+        $set->setQuestion($question);
+        $set->setAnswer($answer);
+        $set->setCategory($categoryId);
+        $set->setStoreId($storeId);
+        $set->save();
+        return $set;
+    }
+    
 }
