@@ -33,7 +33,19 @@ class LCB_Faq_IndexController extends Mage_Core_Controller_Front_Action {
         $this->renderLayout();
     }
 
-    public function emailAction(){
+    /**
+     * Send email to customer from frontend form
+     * 
+     * @return void
+     */
+    public function emailAction()
+    {
+
+        if (!$this->_validateFormKey()) {
+            $this->_redirect('*/*');
+            return;
+        }
+
         $data = $this->getRequest()->getParams();
 
         $storeName = Mage::getStoreConfig('trans_email/ident_general/name');
@@ -57,12 +69,13 @@ class LCB_Faq_IndexController extends Mage_Core_Controller_Front_Action {
         $emailTemplateVariables['comment'] = $data['comment'];
 
         try {
-            $emailTemplate->send($storeEmail, null, $emailTemplateVariables); //send to store
-            $emailTemplate->send($customerEmail,null,$emailTemplateVariables); // send copy to customer
-            Mage::getSingleton('core/session')->addSuccess('Successfully Sent');
+            $emailTemplate->send($storeEmail, null, $emailTemplateVariables);
+            $emailTemplate->send($customerEmail, null, $emailTemplateVariables);
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('faq')->__("Successfully Sent"));
         } catch (Exception $error) {
             Mage::getSingleton('core/session')->addError($error->getMessage());
         }
+        
         $this->_redirect('*/*/');
     }
 

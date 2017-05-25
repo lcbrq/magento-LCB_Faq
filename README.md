@@ -48,3 +48,10 @@ Frequently Asked Questions plugin for Magento with multistore support
 ### Fixed
 
 - Mass FAQ category remove
+
+## [1.2.1]
+
+### Added 
+
+- Identifier and active columns to FAQ categories
+- Form key validation standard
