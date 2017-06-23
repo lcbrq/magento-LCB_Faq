@@ -95,6 +95,10 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
                     }
                     unset($post_data['stores']);
                 }
+                
+                if (isset($post_data['visibility_groups'])) {
+                    $post_data['visibility_groups'] = implode(',', $post_data['visibility_groups']);
+                }
 
                 $model = Mage::getModel("faq/category")
                         ->addData($post_data)
