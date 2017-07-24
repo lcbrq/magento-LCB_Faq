@@ -61,3 +61,10 @@ Frequently Asked Questions plugin for Magento with multistore support
 ### Added 
 
 - FAQ category customer group visibility restriction
+
+## [1.4.0]
+
+### Added
+
+- Assign FAQ set to more than one category
+- Minor amends and admin form WYSIWYG

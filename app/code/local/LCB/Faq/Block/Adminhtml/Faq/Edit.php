@@ -26,11 +26,19 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit extends Mage_Adminhtml_Block_Widget_Form_
                 ), -100);
 
 
-
         $this->_formScripts[] = "
            function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');
            }";
+    }
+    
+    protected function _prepareLayout()
+    {
+        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+            $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
+        }
+        parent::_prepareLayout();
     }
 
     public function getHeaderText()

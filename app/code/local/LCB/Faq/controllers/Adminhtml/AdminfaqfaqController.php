@@ -88,7 +88,10 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
 
             try {
 
-
+                if (isset($post_data['category']) && is_array($post_data['category'])) {
+                    $post_data['category'] = join(",", $post_data['category']);
+                }
+                
                 if (isset($post_data['stores'])) {
                     if (in_array('0', $post_data['stores'])) {
                         $post_data['store_id'] = '0';

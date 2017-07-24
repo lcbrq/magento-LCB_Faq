@@ -83,6 +83,7 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         } elseif (Mage::registry("faq_data")) {
             $form->setValues(Mage::registry("faq_data")->getData());
         }
+        
         return parent::_prepareForm();
     }
 

@@ -17,7 +17,7 @@ class LCB_Faq_Model_Category extends Mage_Core_Model_Abstract {
     public function getFaqCollection()
     {
         return Mage::getModel('faq/faq')->getCollection()
-                        ->addFieldToFilter('category', $this->id)
+                        ->addFieldToFilter('category',  ['finset' => $this->getId()])
                         ->addStoreFilter(Mage::app()->getStore()->getStoreId()
         );
     }
