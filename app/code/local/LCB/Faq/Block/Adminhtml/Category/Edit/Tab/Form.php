@@ -40,6 +40,11 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             "label" => Mage::helper("faq")->__("Name"),
             "name" => "name",
         ));
+        
+        $fieldset->addField("identifier", "text", array(
+            "label" => Mage::helper("faq")->__("Identifier"),
+            "name" => "identifier",
+        ));
 
         $fieldset->addField("parent_id", "select", array(
             "label" => Mage::helper("faq")->__("Parent Category"),
