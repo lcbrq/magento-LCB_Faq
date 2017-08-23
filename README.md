@@ -68,3 +68,9 @@ Frequently Asked Questions plugin for Magento with multistore support
 
 - Assign FAQ set to more than one category
 - Minor amends and admin form WYSIWYG
+
+## [1.4.1]
+
+### Added
+
+- Possibility to set group restriction per FAQ set

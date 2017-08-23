@@ -101,6 +101,10 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
                     unset($post_data['stores']);
                 }
 
+                if (isset($post_data['visibility_groups'])) {
+                    $post_data['visibility_groups'] = implode(',', $post_data['visibility_groups']);
+                }
+                
                 $model = Mage::getModel("faq/faq")
                         ->addData($post_data)
                         ->setId($this->getRequest()->getParam("id"))
