@@ -9,6 +9,11 @@
  */
 class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_Action {
 
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('cms/faq/faq');
+    }
+    
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("faq/faq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq  Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
