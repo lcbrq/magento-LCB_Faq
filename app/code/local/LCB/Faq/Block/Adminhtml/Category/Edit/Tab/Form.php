@@ -40,6 +40,11 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             "label" => Mage::helper("faq")->__("Name"),
             "name" => "name",
         ));
+        
+        $fieldset->addField("identifier", "text", array(
+            "label" => Mage::helper("faq")->__("Identifier"),
+            "name" => "identifier",
+        ));
 
         $fieldset->addField("parent_id", "select", array(
             "label" => Mage::helper("faq")->__("Parent Category"),
@@ -54,8 +59,14 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             "name" => "is_active",
             'values' => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray()
         ));
-
         
+        $fieldset->addField("visibility_groups", "multiselect", array(
+            'label' => Mage::helper("faq")->__("Visibility"),
+            'name' => 'visibility_groups',
+            'values' => Mage::getSingleton('faq/system_config_groups')->toOptionArray(),
+            'required' => true
+        ));
+
         if (!Mage::app()->isSingleStoreMode()) {
             $fieldset->addField('store_id', 'multiselect', array(
                 'name' => 'stores[]',
@@ -77,6 +88,7 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         } elseif (Mage::registry("faq_data")) {
             $form->setValues(Mage::registry("faq_data")->getData());
         }
+        
         return parent::_prepareForm();
     }
 

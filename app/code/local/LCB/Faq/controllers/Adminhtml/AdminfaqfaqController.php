@@ -9,6 +9,11 @@
  */
 class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_Action {
 
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('cms/faq/faq');
+    }
+    
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("faq/faq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq  Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
@@ -88,7 +93,10 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
 
             try {
 
-
+                if (isset($post_data['category']) && is_array($post_data['category'])) {
+                    $post_data['category'] = join(",", $post_data['category']);
+                }
+                
                 if (isset($post_data['stores'])) {
                     if (in_array('0', $post_data['stores'])) {
                         $post_data['store_id'] = '0';
@@ -98,6 +106,10 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
                     unset($post_data['stores']);
                 }
 
+                if (isset($post_data['visibility_groups'])) {
+                    $post_data['visibility_groups'] = implode(',', $post_data['visibility_groups']);
+                }
+                
                 $model = Mage::getModel("faq/faq")
                         ->addData($post_data)
                         ->setId($this->getRequest()->getParam("id"))

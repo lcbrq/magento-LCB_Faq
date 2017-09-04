@@ -35,10 +35,8 @@ class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_
     public function getHeaderText()
     {
         if (Mage::registry("faq_data") && Mage::registry("faq_data")->getId()) {
-
-            return Mage::helper("faq")->__("Edit Item '%s'", $this->htmlEscape(Mage::registry("faq_data")->getId()));
+            return Mage::helper("faq")->__("Edit Item '%s'", $this->htmlEscape(Mage::registry("faq_data")->getName()));
         } else {
-
             return Mage::helper("faq")->__("Add Item");
         }
     }

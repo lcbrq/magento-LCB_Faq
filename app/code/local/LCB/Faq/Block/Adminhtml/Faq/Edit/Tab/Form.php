@@ -20,18 +20,43 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
         $fieldset->addField("question", "text", array(
             "label" => Mage::helper("faq")->__("Question"),
             "name" => "question",
+            "style" => "width: 600px"
         ));
 
-        $fieldset->addField("answer", "textarea", array(
-            "label" => Mage::helper("faq")->__("Answer"),
-            "name" => "answer",
-        ));
+        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
+                    array(
+                        'add_widgets' => false,
+                        'add_variables' => false,
+                        'add_images' => false,
+            ));
+            $fieldset->addField("answer", "editor", array(
+                "label" => Mage::helper("faq")->__("Answer"),
+                "name" => "answer",
+                "wysiwyg" => true,
+                "config" => $wysiwygConfig,
+                "style" => "width: 600px"
+            ));
+        } else {
+            $fieldset->addField("answer", "textarea", array(
+                "label" => Mage::helper("faq")->__("Answer"),
+                "name" => "answer",
+                "style" => "width: 600px"
+            ));
+        }
 
-        $fieldset->addField('category', 'select', array(
+        $fieldset->addField('category', 'multiselect', array(
             'label' => Mage::helper('faq')->__('Category'),
             'values' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesValues(),
             'name' => 'category',
         ));
+        
+       $fieldset->addField("visibility_groups", "multiselect", array(
+            'label' => Mage::helper("faq")->__("Visibility"),
+            'name' => 'visibility_groups',
+            'values' => Mage::getSingleton('faq/system_config_groups')->toOptionArray(),
+            'required' => true
+        ));        
 
         if (!Mage::app()->isSingleStoreMode()) {
             $fieldset->addField('store_id', 'multiselect', array(

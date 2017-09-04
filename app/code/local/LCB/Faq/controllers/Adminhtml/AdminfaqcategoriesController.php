@@ -9,6 +9,11 @@
  */
 class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Controller_Action {
 
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('cms/faq/categories');
+    }
+    
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("faq/faq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq  Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
@@ -94,6 +99,10 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
                         $post_data['store_id'] = join(",", $post_data['stores']);
                     }
                     unset($post_data['stores']);
+                }
+                
+                if (isset($post_data['visibility_groups'])) {
+                    $post_data['visibility_groups'] = implode(',', $post_data['visibility_groups']);
                 }
 
                 $model = Mage::getModel("faq/category")

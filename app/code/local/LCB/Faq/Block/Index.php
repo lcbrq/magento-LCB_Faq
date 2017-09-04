@@ -9,11 +9,34 @@
  */
 class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
 
+    /**
+     * Get questions and answers from current category
+     * 
+     * @uses module LCB_Faq
+     * @return LCB_Faq_Model_Mysql4_Faq_Collection
+     */
+    public function getQuestionsAndAnswers()
+    {
+        $categoryId = $this->getRequest()->getParam('id');
+        if (!$categoryId) {
+            $categoryId = Mage::getModel('faq/category')->getCollection()->getFirstItem()->getId();
+        }
+        $category = Mage::getModel('faq/category')->load($categoryId);
+        return $category->getFaqCollection();
+    }
+
+    /**
+     * Get FAQ categories filtered by visibility
+     * 
+     * @return array
+     */
     public function getCategories()
     {
         $categories = array();
         foreach (Mage::getModel('faq/category')->getCollection() as $category) {
-            $categories[$category->getId()] = $category;
+            if($category->isVisible()){
+               $categories[$category->getId()] = $category;
+            }
         }
         return $categories;
     }

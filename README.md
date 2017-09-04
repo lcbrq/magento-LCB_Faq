@@ -55,3 +55,22 @@ Frequently Asked Questions plugin for Magento with multistore support
 
 - Identifier and active columns to FAQ categories
 - Form key validation standard
+
+## [1.3.0]
+
+### Added 
+
+- FAQ category customer group visibility restriction
+
+## [1.4.0]
+
+### Added
+
+- Assign FAQ set to more than one category
+- Minor amends and admin form WYSIWYG
+
+## [1.4.1]
+
+### Added
+
+- Possibility to set group restriction per FAQ set
