@@ -50,13 +50,15 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
             'values' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesValues(),
             'name' => 'category',
         ));
-        
-       $fieldset->addField("visibility_groups", "multiselect", array(
-            'label' => Mage::helper("faq")->__("Visibility"),
-            'name' => 'visibility_groups',
-            'values' => Mage::getSingleton('faq/system_config_groups')->toOptionArray(),
-            'required' => true
-        ));        
+
+       if(Mage::helper('faq')->visibilityGroupsEnabled()){
+           $fieldset->addField("visibility_groups", "multiselect", array(
+                'label' => Mage::helper("faq")->__("Visibility"),
+                'name' => 'visibility_groups',
+                'values' => Mage::getSingleton('faq/system_config_groups')->toOptionArray(),
+                'required' => true
+           ));
+       }
 
         if (!Mage::app()->isSingleStoreMode()) {
             $fieldset->addField('store_id', 'multiselect', array(

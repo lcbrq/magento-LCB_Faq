@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_Faq>
-            <version>1.4.1</version>
+            <version>1.4.2</version>
         </LCB_Faq>
     </modules>
     <frontend>
@@ -71,7 +71,7 @@
                 </connection>
             </faq_read>
         </resources>
-	<template>
+        <template>
             <email>
                 <lcb_faq_template module="faq">
                     <label>Contact</label>
@@ -93,57 +93,6 @@
         </routers>
     </admin>
     <adminhtml>
-        <menu>
-            <cms>
-                <children>
-                    <faq module="faq">
-                        <title>Faq</title>
-                        <sort_order>100</sort_order>
-                        <children>
-                            <faq module="faq">
-                                <title>Questions and Answers</title>
-                                <sort_order>0</sort_order>
-                                <action>adminhtml/adminfaqfaq</action>
-                            </faq>
-                            <categories module="faq">
-                                <title>Categories</title>
-                                <sort_order>1</sort_order>
-                                <action>adminhtml/adminfaqcategories</action>
-                            </categories>
-                        </children>
-                    </faq>
-                </children>
-            </cms>
-        </menu>
-        <acl>
-            <resources>
-                <all>
-                    <title>Allow Everything</title>
-                </all>
-                <admin>
-                    <children>
-                        <cms>
-                            <children>
-                                <faq translate="title" module="faq">
-                                    <title>Faq</title>
-                                    <sort_order>1000</sort_order>
-                                    <children>
-                                        <faq translate="title">
-                                            <title>Questions and Answers</title>
-                                            <sort_order>0</sort_order>
-                                        </faq>
-                                        <categories translate="title">
-                                            <title>Categories</title>
-                                            <sort_order>1</sort_order>
-                                        </categories>
-                                    </children>
-                                </faq> 
-                            </children>
-                        </cms>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
         <layout>
             <updates>
                 <faq>
@@ -161,4 +110,11 @@
             </modules>
         </translate>
     </adminhtml>
+    <default>
+        <faq>
+            <general>
+                <visibility_groups>0</visibility_groups>  
+            </general>
+        </faq>
+    </default>
 </config> 

@@ -9,6 +9,8 @@
  */
 class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract {
     
+     const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
+    
     /**
      * Slugify string
      * @return string
@@ -53,6 +55,16 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract {
         $set->setStoreId($storeId);
         $set->save();
         return $set;
+    }
+    
+    /**
+     * Check if visibility groups are enabled
+     * 
+     * @return boolean
+     */
+    public function visibilityGroupsEnabled()
+    {
+        return Mage::getStoreConfig(self::XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED);
     }
     
 }

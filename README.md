@@ -74,3 +74,15 @@ Frequently Asked Questions plugin for Magento with multistore support
 ### Added
 
 - Possibility to set group restriction per FAQ set
+
+## [1.4.2]
+
+### Added
+
+- Possibility to hide group restriction in forms
+- Possibility to set FAQ category id in static block directive
+
+### Fixed
+
+- Disabled FAQ categories are no longer included
+- Module configuration XML structure
