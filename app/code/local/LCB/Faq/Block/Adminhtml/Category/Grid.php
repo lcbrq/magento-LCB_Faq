@@ -64,6 +64,12 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
             "index" => "name",
         ));
 
+        $this->addColumn("position", array(
+            "header" => Mage::helper("faq")->__("Position"),
+            "type" => "number",
+            "index" => "position",
+        ));
+
         $this->addColumn("is_active", array(
             "header" => Mage::helper("faq")->__("Active"),
             "index" => "is_active",
