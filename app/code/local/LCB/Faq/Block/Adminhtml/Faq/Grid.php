@@ -21,6 +21,7 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
     protected function _prepareCollection()
     {
         $collection = Mage::getModel("faq/faq")->getCollection();
+        $collection->getSelect()->order('position ASC');
         $this->setCollection($collection);
         parent::_prepareCollection();
         foreach ($collection as $link) {
@@ -68,6 +69,12 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
             'options' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesOptions(),
         ));
 
+        $this->addColumn("position", array(
+            "header" => Mage::helper("faq")->__("Position"),
+            "type" => "number",
+            "index" => "position",
+        ));
+        
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('store_id', array(
                 'header' => Mage::helper('faq')->__('Store View'),

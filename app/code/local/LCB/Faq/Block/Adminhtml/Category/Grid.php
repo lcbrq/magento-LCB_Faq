@@ -21,6 +21,7 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareCollection()
     {
         $collection = Mage::getModel("faq/category")->getCollection();
+        $collection->getSelect()->order('position ASC');
         $this->setCollection($collection);
         parent::_prepareCollection();
         foreach ($collection as $link) {

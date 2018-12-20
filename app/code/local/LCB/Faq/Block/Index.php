@@ -22,7 +22,9 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
             $categoryId = Mage::getModel('faq/category')->getCollection()->getFirstItem()->getId();
         }
         $category = Mage::getModel('faq/category')->load($categoryId);
-        return $category->getFaqCollection();
+        $collection = $category->getFaqCollection();
+        $collection->getSelect()->order('position ASC');
+        return $collection;
     }
 
     /**
@@ -33,7 +35,9 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
     public function getCategories()
     {
         $categories = array();
-        foreach (Mage::getModel('faq/category')->getCollection() as $category) {
+        $collection = Mage::getModel('faq/category')->getCollection();
+        $collection->getSelect()->order('position ASC');
+        foreach ($collection as $category) {
             if($category->getIsActive() && $category->isVisible()){
                $categories[$category->getId()] = $category;
             }

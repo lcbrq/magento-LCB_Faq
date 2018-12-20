@@ -44,6 +44,7 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
         $fieldset->addField("position", "text", array(
             "label" => Mage::helper("faq")->__("Position"),
             "name" => "position",
+            "class" => 'validate-number'
         ));
         
         $fieldset->addField("identifier", "text", array(

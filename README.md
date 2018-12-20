@@ -86,3 +86,7 @@ Frequently Asked Questions plugin for Magento with multistore support
 
 - Disabled FAQ categories are no longer included
 - Module configuration XML structure
+
+## [1.4.3]
+
+- Add position feature to FAQ categories and sets
