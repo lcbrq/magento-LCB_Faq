@@ -5,6 +5,21 @@
             <block type="faq/adminhtml_faq" name="faq" />
         </reference>
     </adminhtml_adminfaqfaq_index>
+    
+    <adminhtml_adminfaqfaq_edit>
+        <update handle="editor"/>
+        <reference name="head">
+             <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+    </adminhtml_adminfaqfaq_edit>
+    
+    <adminhtml_adminfaqfaq_new>
+        <update handle="editor"/>
+        <reference name="head">
+             <action method="setCanLoadTinyMce"><load>1</load></action>
+        </reference>
+    </adminhtml_adminfaqfaq_new>
+    
     <adminhtml_adminfaqcategories_index>
         <reference name="content">
             <block type="faq/adminhtml_category" name="faq_categories" />
