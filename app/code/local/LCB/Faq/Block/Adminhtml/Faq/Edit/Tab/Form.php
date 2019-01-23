@@ -28,8 +28,7 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
                     array(
                         'add_widgets' => false,
                         'add_variables' => false,
-                        'add_images' => true,
-                        'files_browser_window_url'=> $this->getBaseUrl().'admin/cms_wysiwyg_images/index/'
+                        'add_images' => true
             ));
             $fieldset->addField("answer", "editor", array(
                 "label" => Mage::helper("faq")->__("Answer"),
