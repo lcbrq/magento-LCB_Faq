@@ -7,7 +7,7 @@ $installer->getConnection()
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER, 6,
             'nullable' => true,
             'default' => null,
-            'comment' => 'store_selector'
+            'comment' => 'store_selector',
         ));
 
 $installer->endSetup();

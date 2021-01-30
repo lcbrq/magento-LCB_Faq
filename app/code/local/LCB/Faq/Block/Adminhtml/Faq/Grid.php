@@ -7,8 +7,8 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid {
-
+class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid
+{
     public function __construct()
     {
         parent::__construct();
@@ -74,7 +74,7 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
             "type" => "number",
             "index" => "position",
         ));
-        
+
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('store_id', array(
                 'header' => Mage::helper('faq')->__('Store View'),
@@ -106,17 +106,17 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
         $this->getMassactionBlock()->addItem('remove_faq', array(
             'label' => Mage::helper('faq')->__('Remove'),
             'url' => $this->getUrl('*/adminhtml_faq/massRemove'),
-            'confirm' => Mage::helper('faq')->__('Are you sure?')
+            'confirm' => Mage::helper('faq')->__('Are you sure?'),
         ));
         return $this;
     }
 
-    static public function getCategoriesOptions()
+    public static function getCategoriesOptions()
     {
         return Mage::getModel('faq/category')->getOptionArray();
     }
 
-    static public function getCategoriesValues()
+    public static function getCategoriesValues()
     {
         $data_array = array();
         foreach (LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesOptions() as $k => $v) {
@@ -124,5 +124,4 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid 
         }
         return($data_array);
     }
-
 }

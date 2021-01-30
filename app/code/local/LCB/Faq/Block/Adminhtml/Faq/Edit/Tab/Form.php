@@ -7,41 +7,40 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form {
-
+class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Widget_Form
+{
     protected function _prepareForm()
     {
-
         $form = new Varien_Data_Form();
         $this->setForm($form);
         $fieldset = $form->addFieldset("faq_form", array("legend" => Mage::helper("faq")->__("Item information")));
 
-
         $fieldset->addField("question", "text", array(
             "label" => Mage::helper("faq")->__("Question"),
             "name" => "question",
-            "style" => "width: 600px"
+            "style" => "width: 600px",
         ));
 
         if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
             $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
-                    array(
+                array(
                         'add_widgets' => false,
                         'add_variables' => false,
-                        'add_images' => true
-            ));
+                        'add_images' => true,
+                )
+            );
             $fieldset->addField("answer", "editor", array(
                 "label" => Mage::helper("faq")->__("Answer"),
                 "name" => "answer",
                 "wysiwyg" => true,
                 "config" => $wysiwygConfig,
-                "style" => "width: 600px"
+                "style" => "width: 600px",
             ));
         } else {
             $fieldset->addField("answer", "textarea", array(
                 "label" => Mage::helper("faq")->__("Answer"),
                 "name" => "answer",
-                "style" => "width: 600px"
+                "style" => "width: 600px",
             ));
         }
 
@@ -50,21 +49,21 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
             'values' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesValues(),
             'name' => 'category',
         ));
-        
+
         $fieldset->addField("position", "text", array(
             "label" => Mage::helper("faq")->__("Position"),
             "name" => "position",
-            "class" => 'validate-number'
-        ));        
+            "class" => 'validate-number',
+        ));
 
-       if(Mage::helper('faq')->visibilityGroupsEnabled()){
-           $fieldset->addField("visibility_groups", "multiselect", array(
+        if (Mage::helper('faq')->visibilityGroupsEnabled()) {
+            $fieldset->addField("visibility_groups", "multiselect", array(
                 'label' => Mage::helper("faq")->__("Visibility"),
                 'name' => 'visibility_groups',
                 'values' => Mage::getSingleton('faq/system_config_groups')->toOptionArray(),
-                'required' => true
+                'required' => true,
            ));
-       }
+        }
 
         if (!Mage::app()->isSingleStoreMode()) {
             $fieldset->addField('store_id', 'multiselect', array(
@@ -89,5 +88,4 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
         }
         return parent::_prepareForm();
     }
-
 }

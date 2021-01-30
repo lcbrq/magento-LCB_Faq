@@ -7,11 +7,11 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
-
+class LCB_Faq_Block_Index extends Mage_Core_Block_Template
+{
     /**
      * Get questions and answers from current category
-     * 
+     *
      * @uses module LCB_Faq
      * @return LCB_Faq_Model_Mysql4_Faq_Collection
      */
@@ -29,7 +29,7 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
 
     /**
      * Get FAQ categories filtered by visibility
-     * 
+     *
      * @return array
      */
     public function getCategories()
@@ -38,8 +38,8 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
         $collection = Mage::getModel('faq/category')->getCollection();
         $collection->getSelect()->order('position ASC');
         foreach ($collection as $category) {
-            if($category->getIsActive() && $category->isVisible()){
-               $categories[$category->getId()] = $category;
+            if ($category->getIsActive() && $category->isVisible()) {
+                $categories[$category->getId()] = $category;
             }
         }
         return $categories;
@@ -48,10 +48,11 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
     /**
      * Get FAQ contact form POST action
      * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
-     * @return string 
+     * @return string
      */
-    public function getFormAction(){
-    	return $this->getUrl('faq/index/email');
+    public function getFormAction()
+    {
+        return $this->getUrl('faq/index/email');
     }
 
     /**
@@ -59,8 +60,8 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template {
      * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
      * @return string
      */
-    public function getContactFormAction(){
+    public function getContactFormAction()
+    {
         return $this->getUrl('contacts/index/post');
     }
-
 }

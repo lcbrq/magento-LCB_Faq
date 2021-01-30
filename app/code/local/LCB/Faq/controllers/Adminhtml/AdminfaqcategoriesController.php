@@ -7,13 +7,13 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Controller_Action {
-
+class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Controller_Action
+{
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('cms/faq/categories');
     }
-    
+
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("faq/faq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq  Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
@@ -54,7 +54,6 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
 
     public function newAction()
     {
-
         $this->_title($this->__("Categories"));
         $this->_title($this->__("Categories"));
         $this->_title($this->__("New Category"));
@@ -84,14 +83,10 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
 
     public function saveAction()
     {
-
         $post_data = $this->getRequest()->getPost();
 
-
         if ($post_data) {
-
             try {
-
                 if (isset($post_data['stores'])) {
                     if (in_array('0', $post_data['stores'])) {
                         $post_data['store_id'] = '0';
@@ -100,7 +95,7 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
                     }
                     unset($post_data['stores']);
                 }
-                
+
                 if (isset($post_data['visibility_groups'])) {
                     $post_data['visibility_groups'] = implode(',', $post_data['visibility_groups']);
                 }
@@ -179,5 +174,4 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
         $grid = $this->getLayout()->createBlock('faq/adminhtml_faq_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
     }
-
 }

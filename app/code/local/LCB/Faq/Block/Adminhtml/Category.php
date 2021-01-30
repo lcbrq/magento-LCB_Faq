@@ -7,8 +7,8 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Category extends Mage_Adminhtml_Block_Widget_Grid_Container {
-
+class LCB_Faq_Block_Adminhtml_Category extends Mage_Adminhtml_Block_Widget_Grid_Container
+{
     public function __construct()
     {
         $this->_controller = "adminhtml_category";
@@ -17,5 +17,4 @@ class LCB_Faq_Block_Adminhtml_Category extends Mage_Adminhtml_Block_Widget_Grid_
         $this->_addButtonLabel = Mage::helper("faq")->__("Add New Category");
         parent::__construct();
     }
-    
 }

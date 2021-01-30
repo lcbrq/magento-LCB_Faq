@@ -2,7 +2,6 @@
 /**
  * Add FAQ set position feature
  */
-
 $installer = $this;
 $installer->startSetup();
 $installer->getConnection()
@@ -11,7 +10,7 @@ $installer->getConnection()
         'nullable' => true,
         'default' => 0,
         'after' => 'category',
-        'comment' => 'QA set position'
+        'comment' => 'QA set position',
     ));
 
 $installer->endSetup();

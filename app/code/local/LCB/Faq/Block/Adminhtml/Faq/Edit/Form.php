@@ -7,11 +7,12 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq_Edit_Form extends Mage_Adminhtml_Block_Widget_Form {
-
+class LCB_Faq_Block_Adminhtml_Faq_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+{
     protected function _prepareForm()
     {
-        $form = new Varien_Data_Form(array(
+        $form = new Varien_Data_Form(
+            array(
             "id" => "edit_form",
             "action" => $this->getUrl("*/*/save", array("id" => $this->getRequest()->getParam("id"))),
             "method" => "post",
@@ -22,5 +23,4 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Form extends Mage_Adminhtml_Block_Widget_
         $this->setForm($form);
         return parent::_prepareForm();
     }
-
 }

@@ -7,8 +7,8 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Faq extends Mage_Adminhtml_Block_Widget_Grid_Container {
-
+class LCB_Faq_Block_Adminhtml_Faq extends Mage_Adminhtml_Block_Widget_Grid_Container
+{
     public function __construct()
     {
         $this->_controller = "adminhtml_faq";
@@ -17,5 +17,4 @@ class LCB_Faq_Block_Adminhtml_Faq extends Mage_Adminhtml_Block_Widget_Grid_Conta
         $this->_addButtonLabel = Mage::helper("faq")->__("Add New Set");
         parent::__construct();
     }
-
 }

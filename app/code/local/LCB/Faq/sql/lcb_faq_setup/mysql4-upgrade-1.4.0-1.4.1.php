@@ -3,7 +3,6 @@
 /**
  * Add FAQ set visibility feature
  */
-
 $installer = $this;
 $installer->startSetup();
 $installer->getConnection()
@@ -12,7 +11,7 @@ $installer->getConnection()
             'nullable' => true,
             'default' => null,
             'after' => 'category',
-            'comment' => 'set visibility groups'
+            'comment' => 'set visibility groups',
         ));
 
 $installer->endSetup();

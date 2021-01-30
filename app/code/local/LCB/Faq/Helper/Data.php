@@ -7,25 +7,25 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract {
-    
-     const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
-    
+class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
+{
+    const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
+
     /**
      * Slugify string
      * @return string
      */
-    public function makeSlug($string){
+    public function makeSlug($string)
+    {
         return Mage::getModel('catalog/product_url')->formatUrlKey($string);
     }
-    
-    
+
     /**
      * Add new FAQ category
-     
-     * @param string $name
-     * @param string $url
-     * @param int $parentId
+
+     * @param  string                 $name
+     * @param  string                 $url
+     * @param  int                    $parentId
      * @return LCB_Faq_Model_Category
      */
     public function addCategory($name, $identifier, $parentId = null)
@@ -40,10 +40,10 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract {
 
     /**
      * Add new FAQ Q&A set
-     * 
-     * @param string $question
-     * @param string $answer
-     * @param int $categoryId
+     *
+     * @param  string            $question
+     * @param  string            $answer
+     * @param  int               $categoryId
      * @return LCB_Faq_Model_Faq
      */
     public function addQA($question, $answer, $categoryId = null, $storeId = 0)
@@ -56,15 +56,14 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract {
         $set->save();
         return $set;
     }
-    
+
     /**
      * Check if visibility groups are enabled
-     * 
+     *
      * @return boolean
      */
     public function visibilityGroupsEnabled()
     {
         return Mage::getStoreConfig(self::XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED);
     }
-    
 }
