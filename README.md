@@ -90,3 +90,7 @@ Frequently Asked Questions plugin for Magento with multistore support
 ## [1.4.3]
 
 - Add position feature to FAQ categories and sets
+
+## [1.5.0]
+
+- Add router and allow for custom urls usage

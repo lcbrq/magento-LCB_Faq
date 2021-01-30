@@ -9,7 +9,20 @@
  */
 class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    /**
+     * @var string
+     */
     const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
+
+    /**
+     * Get custom FAQ routes
+     * @since 1.5.0
+     * @return array
+     */
+    public function getCustomRoutes()
+    {
+        return array('faq');
+    }
 
     /**
      * Slugify string

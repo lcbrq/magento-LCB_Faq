@@ -50,6 +50,12 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
             'name' => 'category',
         ));
 
+        $fieldset->addField("url_key", "text", array(
+            "label" => Mage::helper("faq")->__("URL Key"),
+            "name" => "url_key",
+            "class" => 'validate-identifier',
+        ));
+
         $fieldset->addField("position", "text", array(
             "label" => Mage::helper("faq")->__("Position"),
             "name" => "position",
