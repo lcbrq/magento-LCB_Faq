@@ -19,6 +19,7 @@
 
         <?php foreach ($categories as $category):
              $collection = $category->getFaqCollection();
+             $collection = Mage::helper('faq')->applyVisibilityFilterToCollection($collection);
              if (count($collection)): ?>
                 <div class="row">
                     <div class="fieldset">

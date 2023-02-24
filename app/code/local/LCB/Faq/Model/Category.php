@@ -16,43 +16,9 @@ class LCB_Faq_Model_Category extends Mage_Core_Model_Abstract
 
     public function getFaqCollection()
     {
-        $collection = Mage::getModel('faq/faq')->getCollection()
-                        ->addFieldToFilter('category', array('finset' => $this->getId()))
-                        ->addStoreFilter(
-                            Mage::app()->getStore()->getStoreId()
-                        );
-
-        /**
-         * Release event for custom visibility hook
-         */
-        $dispatch = new Varien_Object();
-        $event = Mage::dispatchEvent('lcb_faq_set_visibility', array(
-            'collection' => $collection,
-            'dispatch' => $dispatch,
-        ));
-
-        if (!$dispatch->getProcessed()) {
-            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
-                $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-                $collection->addFieldToFilter(
-                    array('visibility_groups', 'visibility_groups'),
-                    array(
-                            array('null' => true),
-                            array('finset' => $customerGroupId),
-                        )
-                );
-            } else {
-                $collection->addFieldToFilter(
-                    array('visibility_groups', 'visibility_groups'),
-                    array(
-                            array('null' => true),
-                            array('finset' => Mage_Customer_Model_Group::NOT_LOGGED_IN_ID),
-                        )
-                );
-            }
-        }
-
-        return $collection;
+        return Mage::getModel('faq/faq')->getCollection()
+            ->addFieldToFilter('category', array('finset' => $this->getId()))
+            ->addStoreFilter(Mage::app()->getStore()->getStoreId());
     }
 
     public function getOptionArray()

@@ -12,6 +12,11 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * @var string
      */
+    const XML_PATH_DEFAULT_FAQ_CATEGORY_ID = 'faq/general/default_category';
+
+    /**
+     * @var string
+     */
     const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
 
     /**
@@ -22,6 +27,17 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
     public function getCustomRoutes()
     {
         return array('faq');
+    }
+
+    /**
+     * Get default FAQ category id
+     *
+     * @since 1.5.1
+     * @return int
+     */
+    public function getDefaultCategoryId()
+    {
+        return (int) Mage::getStoreConfig(self::XML_PATH_DEFAULT_FAQ_CATEGORY_ID);
     }
 
     /**
@@ -78,5 +94,43 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
     public function visibilityGroupsEnabled()
     {
         return Mage::getStoreConfig(self::XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED);
+    }
+
+    /**
+     * Release event for custom visibility hook
+     *
+     * @param  LCB_Faq_Model_Mysql4_Faq_Collection $collection
+     * @return LCB_Faq_Model_Mysql4_Faq_Collection
+     */
+    public function applyVisibilityFilterToCollection($collection)
+    {
+        $dispatch = new Varien_Object();
+        $event = Mage::dispatchEvent('lcb_faq_set_visibility', array(
+            'collection' => $collection,
+            'dispatch' => $dispatch,
+        ));
+
+        if (!$dispatch->getProcessed()) {
+            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                $customerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+                $collection->addFieldToFilter(
+                    array('visibility_groups', 'visibility_groups'),
+                    array(
+                            array('null' => true),
+                            array('finset' => $customerGroupId),
+                        )
+                );
+            } else {
+                $collection->addFieldToFilter(
+                    array('visibility_groups', 'visibility_groups'),
+                    array(
+                            array('null' => true),
+                            array('finset' => Mage_Customer_Model_Group::NOT_LOGGED_IN_ID),
+                        )
+                );
+            }
+        }
+
+        return $collection;
     }
 }

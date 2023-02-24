@@ -19,10 +19,17 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
     {
         $categoryId = $this->getRequest()->getParam('id', $this->getData('id'));
         if (!$categoryId) {
-            $categoryId = Mage::getModel('faq/category')->getCollection()->getFirstItem()->getId();
+            $categoryId = Mage::helper('gtx_faq')->getDefaultCategoryId();
         }
-        $category = Mage::getModel('faq/category')->load($categoryId);
-        $collection = $category->getFaqCollection();
+
+        if ($categoryId) {
+            $category = Mage::getModel('faq/category')->load($categoryId);
+            $collection = $category->getFaqCollection();
+        } else {
+            $collection = Mage::getModel('faq/faq')->getCollection()->addStoreFilter(Mage::app()->getStore()->getStoreId());
+        }
+
+        $collection = Mage::helper('faq')->applyVisibilityFilterToCollection($collection);
         $collection->getSelect()->order('position ASC');
         return $collection;
     }

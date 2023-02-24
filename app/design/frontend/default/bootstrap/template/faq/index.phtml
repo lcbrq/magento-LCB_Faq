@@ -14,7 +14,9 @@
             </div>
             <div class="row summary hidden">
                 <?php foreach ($categories as $category): ?>
-                    <?php $collection = $category->getFaqCollection();
+                    <?php
+                    $collection = $category->getFaqCollection();
+                    $collection = Mage::helper('faq')->applyVisibilityFilterToCollection($collection);
                     if (count($collection)): ?>
                         <div class="col-md-12">
                             <span class="title"><?php echo $this->__($category->getName()); ?></span>
