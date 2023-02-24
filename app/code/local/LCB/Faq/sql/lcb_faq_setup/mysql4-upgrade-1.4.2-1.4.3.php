@@ -2,7 +2,6 @@
 /**
  * Add FAQ set category position feature
  */
-
 $installer = $this;
 $installer->startSetup();
 $installer->getConnection()
@@ -11,7 +10,7 @@ $installer->getConnection()
         'nullable' => true,
         'default' => 0,
         'after' => 'is_active',
-        'comment' => 'set category position'
+        'comment' => 'set category position',
     ));
 
 $installer->endSetup();

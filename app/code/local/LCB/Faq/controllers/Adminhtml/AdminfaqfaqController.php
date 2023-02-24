@@ -7,13 +7,13 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_Action {
-
+class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_Action
+{
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('cms/faq/faq');
     }
-    
+
     protected function _initAction()
     {
         $this->loadLayout()->_setActiveMenu("faq/faq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq  Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
@@ -54,7 +54,6 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
 
     public function newAction()
     {
-
         $this->_title($this->__("Faq"));
         $this->_title($this->__("Faq"));
         $this->_title($this->__("New Item"));
@@ -77,7 +76,6 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
         $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
         $this->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq Description"), Mage::helper("adminhtml")->__("Faq Description"));
 
-
         $this->_addContent($this->getLayout()->createBlock("faq/adminhtml_faq_edit"))->_addLeft($this->getLayout()->createBlock("faq/adminhtml_faq_edit_tabs"));
 
         $this->renderLayout();
@@ -85,18 +83,14 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
 
     public function saveAction()
     {
-
         $post_data = $this->getRequest()->getPost();
 
-
         if ($post_data) {
-
             try {
-
                 if (isset($post_data['category']) && is_array($post_data['category'])) {
                     $post_data['category'] = join(",", $post_data['category']);
                 }
-                
+
                 if (isset($post_data['stores'])) {
                     if (in_array('0', $post_data['stores'])) {
                         $post_data['store_id'] = '0';
@@ -109,7 +103,7 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
                 if (isset($post_data['visibility_groups'])) {
                     $post_data['visibility_groups'] = implode(',', $post_data['visibility_groups']);
                 }
-                
+
                 $model = Mage::getModel("faq/faq")
                         ->addData($post_data)
                         ->setId($this->getRequest()->getParam("id"))
@@ -184,5 +178,4 @@ class LCB_Faq_Adminhtml_AdminfaqfaqController extends Mage_Adminhtml_Controller_
         $grid = $this->getLayout()->createBlock('faq/adminhtml_faq_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
     }
-
 }

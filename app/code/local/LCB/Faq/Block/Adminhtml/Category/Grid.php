@@ -7,8 +7,8 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_Grid {
-
+class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_Grid
+{
     public function __construct()
     {
         parent::__construct();
@@ -75,16 +75,16 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
             "header" => Mage::helper("faq")->__("Active"),
             "index" => "is_active",
             "type" => "options",
-            "options" => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray()
+            "options" => Mage::getSingleton('adminhtml/system_config_source_yesno')->toArray(),
         ));
 
-        if(Mage::helper('faq')->visibilityGroupsEnabled()){
+        if (Mage::helper('faq')->visibilityGroupsEnabled()) {
             $this->addColumn("visibility_groups", array(
                 "header" => Mage::helper("faq")->__("Visibility"),
                 "index" => "visibility_groups",
             ));
         }
-        
+
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('store_id', array(
                 'header' => Mage::helper('faq')->__('Store View'),
@@ -96,7 +96,7 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
                 'filter_condition_callback' => array($this, '_filterStoreCondition'),
             ));
         }
-        
+
         $this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV'));
         $this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));
 
@@ -116,9 +116,8 @@ class LCB_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
         $this->getMassactionBlock()->addItem('remove_faq_categories', array(
             'label' => Mage::helper('faq')->__('Remove'),
             'url' => $this->getUrl('*/adminfaqcategories/massRemove'),
-            'confirm' => Mage::helper('faq')->__('Are you sure?')
+            'confirm' => Mage::helper('faq')->__('Are you sure?'),
         ));
         return $this;
     }
-
 }

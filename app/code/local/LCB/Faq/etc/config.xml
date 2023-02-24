@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_Faq>
-            <version>1.4.5</version>
+            <version>1.5.0</version>
         </LCB_Faq>
     </modules>
     <frontend>
@@ -111,6 +111,14 @@
         </translate>
     </adminhtml>
     <default>
+        <web>
+            <routers>
+                <lcb_faq_router>
+                    <area>frontend</area>
+                    <class>LCB_Faq_Controller_Router</class>
+                </lcb_faq_router>
+            </routers>
+        </web>
         <faq>
             <general>
                 <visibility_groups>0</visibility_groups>  

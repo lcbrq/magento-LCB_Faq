@@ -7,8 +7,8 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_Form_Container {
-
+class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+{
     public function __construct()
     {
         parent::__construct();
@@ -24,8 +24,6 @@ class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_
             "class" => "save",
                 ), -100);
 
-
-
         $this->_formScripts[] = "
             function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');
@@ -40,5 +38,4 @@ class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_
             return Mage::helper("faq")->__("Add Item");
         }
     }
-
 }

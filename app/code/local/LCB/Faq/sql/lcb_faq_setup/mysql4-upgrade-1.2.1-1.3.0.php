@@ -3,7 +3,6 @@
 /**
  * Add FAQ category visibility feature
  */
-
 $installer = $this;
 $installer->startSetup();
 $installer->getConnection()
@@ -12,7 +11,7 @@ $installer->getConnection()
             'nullable' => true,
             'default' => null,
             'after' => 'is_active',
-            'comment' => 'faq category visibility groups'
+            'comment' => 'faq category visibility groups',
         ));
 
 $installer->endSetup();

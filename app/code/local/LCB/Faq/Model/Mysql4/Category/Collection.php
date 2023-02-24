@@ -7,8 +7,8 @@
  * @package    LCB_Faq
  * @author     Silpion Tomasz Gregorczyk <tom@leftcurlybracket.com>
  */
-class LCB_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract {
-
+class LCB_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+{
     public function _construct()
     {
         $this->_init("faq/category");
@@ -18,21 +18,21 @@ class LCB_Faq_Model_Mysql4_Category_Collection extends Mage_Core_Model_Mysql4_Co
     {
         $this->addFieldToFilter('store_id', array(
             array('finset' => array('0')),
-            array('finset' => array($storeId))));
+            array('finset' => array($storeId)), ));
 
         return $this;
     }
 
     /**
-     * Get category childrens 
-     * @param  int $id
+     * Get category childrens
+     * @param  int   $id
      * @return $this
      */
-    public function getChildrenCategories($id){ 
+    public function getChildrenCategories($id)
+    {
         $this->addFieldToFilter('parent_id', array(
-            array('finset' => array($id))));
+            array('finset' => array($id)), ));
 
         return $this;
     }
-
 }
