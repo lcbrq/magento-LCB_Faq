@@ -21,7 +21,7 @@ class LCB_Faq_Controller_Router extends Mage_Core_Controller_Varien_Router_Stand
             return false;
         }
 
-        $routes = Mage::helper('faq')->getCustomRoutes();
+        $routes = (array) Mage::helper('faq')->getCustomRoutes();
         foreach ($routes as $route) {
             if (strpos($request->getPathInfo() . '/', $route) !== false) {
                 $urlKey = trim(str_replace($route, '', $request->getPathInfo()), '/');
