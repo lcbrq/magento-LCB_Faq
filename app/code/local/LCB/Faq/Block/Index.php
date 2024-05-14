@@ -13,7 +13,7 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
      * Get questions and answers from current category
      *
      * @uses module LCB_Faq
-     * @return LCB_Faq_Model_Mysql4_Faq_Collection
+     * @return LCB_Faq_Model_Resource_Faq_Collection
      */
     public function getQuestionsAndAnswers()
     {

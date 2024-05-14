@@ -12,12 +12,12 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * @var string
      */
-    const XML_PATH_DEFAULT_FAQ_CATEGORY_ID = 'faq/general/default_category';
+    public const XML_PATH_DEFAULT_FAQ_CATEGORY_ID = 'faq/general/default_category';
 
     /**
      * @var string
      */
-    const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
+    public const XML_PATH_FAQ_VISIBILITY_GROUPS_ENABLED = 'faq/general/visibility_groups';
 
     /**
      * Get custom FAQ routes
@@ -99,8 +99,8 @@ class LCB_Faq_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * Release event for custom visibility hook
      *
-     * @param  LCB_Faq_Model_Mysql4_Faq_Collection $collection
-     * @return LCB_Faq_Model_Mysql4_Faq_Collection
+     * @param  LCB_Faq_Model_Resource_Faq_Collection $collection
+     * @return LCB_Faq_Model_Resource_Faq_Collection
      */
     public function applyVisibilityFilterToCollection($collection)
     {
