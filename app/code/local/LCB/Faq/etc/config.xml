@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_Faq>
-            <version>1.5.1</version>
+            <version>1.7.0</version>
         </LCB_Faq>
     </modules>
     <frontend>
@@ -37,10 +37,10 @@
         <models>
             <faq>
                 <class>LCB_Faq_Model</class>
-                <resourceModel>faq_mysql4</resourceModel>
+                <resourceModel>faq_resource</resourceModel>
             </faq>
-            <faq_mysql4>
-                <class>LCB_Faq_Model_Mysql4</class>
+            <faq_resource>
+                <class>LCB_Faq_Model_Resource</class>
                 <entities>		  
                     <faq>
                         <table>lcb_faq</table>
@@ -49,7 +49,7 @@
                         <table>lcb_faq_category</table>
                     </category>
                 </entities>
-            </faq_mysql4>
+            </faq_resource>
         </models>
         <resources>
             <lcb_faq_setup>

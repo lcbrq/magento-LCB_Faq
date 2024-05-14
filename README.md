@@ -2,6 +2,14 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
+## [1.7.0]
+
+- Add basic search route
+
+## [1.6.0]
+
+- Refactor to resource model usage
+
 ## [1.5.1]
 
 - Add router and allow for custom urls usage

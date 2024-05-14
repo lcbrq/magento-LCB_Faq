@@ -9,13 +9,15 @@
  */
 class LCB_Faq_IndexController extends Mage_Core_Controller_Front_Action
 {
+    /**
+     * @return void
+     */
     public function indexAction()
     {
         $this->loadLayout();
         $this->getLayout()->getBlock("head")->setTitle($this->__("FAQ"));
-        $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
 
-        if ($breadcrumbs) {
+        if ($breadcrumbs = $this->getLayout()->getBlock("breadcrumbs")) {
             $breadcrumbs->addCrumb("home", array(
                 "label" => $this->__("Home Page"),
                 "title" => $this->__("Home Page"),
@@ -26,6 +28,35 @@ class LCB_Faq_IndexController extends Mage_Core_Controller_Front_Action
                 "label" => $this->__("FAQ"),
                 "title" => $this->__("FAQ"),
             ));
+        }
+
+        $this->renderLayout();
+    }
+
+    /**
+      * @return void
+      */
+    public function searchAction()
+    {
+        $this->loadLayout();
+
+        if ($breadcrumbs = $this->getLayout()->getBlock("breadcrumbs")) {
+            $breadcrumbs->addCrumb(
+                "home",
+                array(
+                    "label" => $this->__("Home"),
+                    "title" => $this->__("Home"),
+                    "link" => Mage::getBaseUrl(),
+                )
+            );
+
+            $breadcrumbs->addCrumb(
+                "faq",
+                array(
+                    "label" => $this->__("FAQ"),
+                    "title" => $this->__("FAQ"),
+                )
+            );
         }
 
         $this->renderLayout();
