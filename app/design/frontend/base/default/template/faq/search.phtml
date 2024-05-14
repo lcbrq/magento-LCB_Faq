@@ -1,0 +1,33 @@
+<?php 
+/**
+ * @var LCB_Faq_Block_Search $this
+ */
+$sets = $this->getQuestionsAndAnswers();
+?>
+
+<section id="header">
+    <div class="container">
+        <div class="row product-header">
+            <div class="col-md-12">
+                <h1><?php echo $this->__("FAQ"); ?></h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq">
+    <div class="container">
+
+        <?php foreach ($sets as $set): ?>
+            <div class="row">
+                <div class="fieldset">
+                    <div class="panel panel-default">
+                        <h4><?php echo $set->getQuestion(); ?></h4>
+                        <p><?php echo $set->getAnswer(); ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+    </div>
+</section>

@@ -4,10 +4,22 @@
         <reference name="root">
             <action method="setTemplate">
                 <template>page/1column.phtml</template>
-            </action>   
+            </action>
         </reference>
         <reference name="content">
             <block type="faq/index" name="faq_index" template="faq/index.phtml"/>
         </reference>
     </faq_index_index>
+
+    <faq_index_search>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="faq/search" name="faq_search" template="faq/search.phtml"/>
+        </reference>
+    </faq_index_search>
+
 </layout>
