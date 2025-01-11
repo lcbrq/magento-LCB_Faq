@@ -43,6 +43,7 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
     {
         $categories = array();
         $collection = Mage::getModel('faq/category')->getCollection();
+        $collection->addStoreFilter(Mage::app()->getStore()->getStoreId());
         $collection->getSelect()->order('position ASC');
         foreach ($collection as $category) {
             if ($category->getIsActive() && $category->isVisible()) {
