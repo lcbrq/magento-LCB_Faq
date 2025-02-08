@@ -2,6 +2,10 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
+## [1.7.2]
+
+- Refactor FAQ categories selection
+
 ## [1.7.1]
 
 - Fix store context for categories

@@ -66,7 +66,7 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid
             'header' => Mage::helper('faq')->__('Category'),
             'index' => 'category',
             'type' => 'options',
-            'options' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesOptions(),
+            'options' => Mage::getSingleton('faq/system_config_category')->toOptionArray(),
         ));
 
         $this->addColumn("position", array(
@@ -109,19 +109,5 @@ class LCB_Faq_Block_Adminhtml_Faq_Grid extends Mage_Adminhtml_Block_Widget_Grid
             'confirm' => Mage::helper('faq')->__('Are you sure?'),
         ));
         return $this;
-    }
-
-    public static function getCategoriesOptions()
-    {
-        return Mage::getModel('faq/category')->getOptionArray();
-    }
-
-    public static function getCategoriesValues()
-    {
-        $data_array = array();
-        foreach (LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesOptions() as $k => $v) {
-            $data_array[] = array('value' => $k, 'label' => $v);
-        }
-        return($data_array);
     }
 }

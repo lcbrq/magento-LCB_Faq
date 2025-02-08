@@ -44,9 +44,15 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit_Tab_Form extends Mage_Adminhtml_Block_Wid
             ));
         }
 
+        $values = [];
+        $categories = Mage::getModel('faq/category')->getCollection();
+        foreach ($categories as $category) {
+            $values[] = array('value' => $category->getId(), 'label' => $category->getId() .  '-' . $category->getName());
+        }
+
         $fieldset->addField('category', 'multiselect', array(
             'label' => Mage::helper('faq')->__('Category'),
-            'values' => LCB_Faq_Block_Adminhtml_Faq_Grid::getCategoriesValues(),
+            'values' => $values,
             'name' => 'category',
         ));
 

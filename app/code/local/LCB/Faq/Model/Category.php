@@ -21,17 +21,6 @@ class LCB_Faq_Model_Category extends Mage_Core_Model_Abstract
             ->addStoreFilter(Mage::app()->getStore()->getStoreId());
     }
 
-    public function getOptionArray()
-    {
-        $array = array();
-
-        foreach ($this->getCollection() as $category) {
-            $array[$category->getId()] = $category->getName();
-        }
-
-        return $array;
-    }
-
     public function getCode()
     {
         $code = strtolower($this->name);
