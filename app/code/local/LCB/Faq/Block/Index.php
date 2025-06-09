@@ -12,7 +12,6 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
     /**
      * Get questions and answers from current category
      *
-     * @uses module LCB_Faq
      * @return LCB_Faq_Model_Resource_Faq_Collection
      */
     public function getQuestionsAndAnswers()
@@ -31,6 +30,7 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
 
         $collection = Mage::helper('faq')->applyVisibilityFilterToCollection($collection);
         $collection->getSelect()->order('position ASC');
+
         return $collection;
     }
 
@@ -45,16 +45,19 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
         $collection = Mage::getModel('faq/category')->getCollection();
         $collection->addStoreFilter(Mage::app()->getStore()->getStoreId());
         $collection->getSelect()->order('position ASC');
+
         foreach ($collection as $category) {
             if ($category->getIsActive() && $category->isVisible()) {
                 $categories[$category->getId()] = $category;
             }
         }
+
         return $categories;
     }
 
     /**
      * Get FAQ contact form POST action
+     *
      * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
      * @return string
      */
@@ -65,6 +68,7 @@ class LCB_Faq_Block_Index extends Mage_Core_Block_Template
 
     /**
      * Get native magento contact form post action
+     *
      * @author Jigsaw Marcin Gierus <martin@lcbrq.com>
      * @return string
      */

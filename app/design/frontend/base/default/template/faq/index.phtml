@@ -3,7 +3,6 @@
  * @var LCB_Faq_Block_Search $this
  */
 $categories = $this->getCategories();
-$locale = Mage::app()->getLocale()->getLocaleCode();
 ?>
 
 <section id="header">
@@ -11,9 +10,6 @@ $locale = Mage::app()->getLocale()->getLocaleCode();
         <div class="row product-header">
             <div class="col-md-12">
                 <h1><?php echo $this->__("FAQ"); ?></h1>
-                <h2 class="legend">
-                    <?php echo $this->__("Do you have any questions?"); ?>
-                </h2>
             </div>
         </div>
     </div>

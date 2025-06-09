@@ -17,7 +17,7 @@ class LCB_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml_Bloc
     protected function getValues()
     {
         $result = array(
-            "NULL"=>' ',
+            "NULL" => ' ',
             );
         $collection = Mage::getModel("faq/category")->getCollection()
                 ->addFieldToFilter('id', array('neq' => $this->getRequest()->getParam("id")));

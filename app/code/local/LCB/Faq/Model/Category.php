@@ -14,11 +14,19 @@ class LCB_Faq_Model_Category extends Mage_Core_Model_Abstract
         $this->_init("faq/category");
     }
 
+    /**
+     * @return LCB_Faq_Model_Resource_Faq_Collection
+     */
     public function getFaqCollection()
     {
-        return Mage::getModel('faq/faq')->getCollection()
-            ->addFieldToFilter('category', array('finset' => $this->getId()))
-            ->addStoreFilter(Mage::app()->getStore()->getStoreId());
+        $collection = Mage::getModel('faq/faq')->getCollection()
+            ->addFieldToFilter('category', array('finset' => $this->getId()));
+
+        if (!Mage::app()->isSingleStoreMode()) {
+            $collection->addStoreFilter(Mage::app()->getStore()->getStoreId());
+        }
+
+        return $collection;
     }
 
     public function getCode()

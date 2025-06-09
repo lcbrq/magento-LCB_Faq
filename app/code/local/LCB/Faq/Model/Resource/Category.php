@@ -19,7 +19,7 @@ class LCB_Faq_Model_Resource_Category extends Mage_Core_Model_Resource_Db_Abstra
      */
     protected function _afterLoad(Mage_Core_Model_Abstract $object)
     {
-        $object->setVisibilityGroups(explode(',', $object->getVisibilityGroups()));
+        $object->setVisibilityGroups(explode(',', (string) $object->getVisibilityGroups()));
         return parent::_afterLoad($object);
     }
 }

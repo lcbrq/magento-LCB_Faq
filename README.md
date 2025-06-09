@@ -2,6 +2,10 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
+## [1.7.3]
+
+- Fix categories display in single store mode usage and minor adjustments
+
 ## [1.7.2]
 
 - Refactor FAQ categories selection
