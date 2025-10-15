@@ -43,7 +43,13 @@
           
             <faq_resource>
                 <class>LCB_Faq_Model_Resource</class>
-                <entities>		  
+                <entities>
+                    <faq>
+                        <table>lcb_faq</table>
+                    </faq>	
+                    <category>
+                        <table>lcb_faq_category</table>
+                    </category>  		  
                     <item>
                         <table>lcb_faq_item</table>
                     </item>
@@ -52,6 +58,14 @@
               <!--  -->
         </models>
         <resources>
+            <lcb_faq_setup>
+                <setup>
+                    <module>LCB_Faq</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </lcb_faq_setup>
             <faq_write>
                 <connection>
                     <use>core_write</use>
@@ -95,6 +109,13 @@
         </routers>
     </admin>
     <adminhtml>
+        <layout>
+            <updates>
+                <faq>
+                    <file>lcb_faq.xml</file>            
+                </faq>
+            </updates>
+        </layout>
         <!--  -->
         <events>
         <adminhtml_catalog_category_tabs>
