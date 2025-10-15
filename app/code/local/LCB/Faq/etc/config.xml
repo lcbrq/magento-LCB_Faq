@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_Faq>
-            <version>1.7.3</version>
+            <version>1.7.5</version>
         </LCB_Faq>
     </modules>
     <frontend>
@@ -35,31 +35,23 @@
             </faq>
         </blocks>
         <models>
+        <!--  -->
             <faq>
                 <class>LCB_Faq_Model</class>
                 <resourceModel>faq_resource</resourceModel>
             </faq>
+          
             <faq_resource>
                 <class>LCB_Faq_Model_Resource</class>
                 <entities>		  
-                    <faq>
-                        <table>lcb_faq</table>
-                    </faq>
-                    <category>
-                        <table>lcb_faq_category</table>
-                    </category>
+                    <item>
+                        <table>lcb_faq_item</table>
+                    </item>
                 </entities>
             </faq_resource>
+              <!--  -->
         </models>
         <resources>
-            <lcb_faq_setup>
-                <setup>
-                    <module>LCB_Faq</module>
-                </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
-            </lcb_faq_setup>
             <faq_write>
                 <connection>
                     <use>core_write</use>
@@ -70,6 +62,15 @@
                     <use>core_read</use>
                 </connection>
             </faq_read>
+            <!--  -->
+            <lcb_faq_setup>
+                 <setup>
+                    <module>LCB_Faq</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection><use>core_setup</use></connection>
+            </lcb_faq_setup>
+            <!--  -->
         </resources>
         <template>
             <email>
@@ -80,6 +81,7 @@
                 </lcb_faq_template>
             </email>
         </template>
+        
     </global>
     <admin>
         <routers>
@@ -93,13 +95,19 @@
         </routers>
     </admin>
     <adminhtml>
-        <layout>
-            <updates>
-                <faq>
-                    <file>lcb_faq.xml</file>
-                </faq>
-            </updates>
-        </layout>
+        <!--  -->
+        <events>
+        <adminhtml_catalog_category_tabs>
+            <observers>
+            <lcb_faq_add_grid_tab>
+                <class>faq/observer</class>
+                <method>addFaqGridTab</method>
+            </lcb_faq_add_grid_tab>
+            </observers>
+        </adminhtml_catalog_category_tabs>
+        </events>
+
+        <!--  -->
         <translate>
             <modules>
                 <lcb_faq>
