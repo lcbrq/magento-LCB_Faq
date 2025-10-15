@@ -58,6 +58,13 @@
               <!--  -->
         </models>
         <resources>
+            <lcb_faq_setup>
+                 <setup>
+                    <module>LCB_Faq</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection><use>core_setup</use></connection>
+            </lcb_faq_setup>
             <faq_write>
                 <connection>
                     <use>core_write</use>
@@ -68,15 +75,6 @@
                     <use>core_read</use>
                 </connection>
             </faq_read>
-            <!--  -->
-            <lcb_faq_setup>
-                 <setup>
-                    <module>LCB_Faq</module>
-                    <class>Mage_Catalog_Model_Resource_Setup</class>
-                </setup>
-                <connection><use>core_setup</use></connection>
-            </lcb_faq_setup>
-            <!--  -->
         </resources>
         <template>
             <email>
@@ -104,7 +102,7 @@
         <layout>
             <updates>
                 <faq>
-                    <file>lcb_faq.xml</file>            
+                    <file>lcb_faq.xml</file>
                 </faq>
             </updates>
         </layout>
