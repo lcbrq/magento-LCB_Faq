@@ -35,27 +35,24 @@
             </faq>
         </blocks>
         <models>
-        <!--  -->
             <faq>
                 <class>LCB_Faq_Model</class>
                 <resourceModel>faq_resource</resourceModel>
             </faq>
-          
             <faq_resource>
                 <class>LCB_Faq_Model_Resource</class>
                 <entities>
                     <faq>
                         <table>lcb_faq</table>
-                    </faq>	
+                    </faq>
                     <category>
                         <table>lcb_faq_category</table>
-                    </category>  		  
+                    </category>
                     <item>
                         <table>lcb_faq_item</table>
                     </item>
                 </entities>
             </faq_resource>
-              <!--  -->
         </models>
         <resources>
             <lcb_faq_setup>
@@ -85,7 +82,6 @@
                 </lcb_faq_template>
             </email>
         </template>
-        
     </global>
     <admin>
         <routers>
@@ -106,7 +102,6 @@
                 </faq>
             </updates>
         </layout>
-        <!--  -->
         <events>
         <adminhtml_catalog_category_tabs>
             <observers>
@@ -117,8 +112,6 @@
             </observers>
         </adminhtml_catalog_category_tabs>
         </events>
-
-        <!--  -->
         <translate>
             <modules>
                 <lcb_faq>
@@ -140,8 +133,8 @@
         </web>
         <faq>
             <general>
-                <visibility_groups>0</visibility_groups>  
+                <visibility_groups>0</visibility_groups>
             </general>
         </faq>
     </default>
-</config> 
+</config>
