@@ -3,26 +3,27 @@
 class LCB_Faq_Model_Observer
 {
     /**
-     * Dodaje zakładkę "FAQ" na stronie edycji kategorii
+     * Add FAQ grid to catalog_category entity
+     *
+     * @param Varien_Event_Observer $observer
+     * @return void
      */
-
     public function addFaqGridTab(Varien_Event_Observer $observer)
     {
         $tabs = $observer->getEvent()->getTabs();
         $category = Mage::registry('current_category');
         if (!$category || !$category->getId()) {
             return;
-        } // tylko istniejące kategorie
+        }
 
-        $tabs->addTab('lcb_faq_items', array(
+        $tabs->addTab('catalog_category_faq', array(
             'label'   => Mage::helper('adminhtml')->__('FAQ'),
             'content' => Mage::app()->getLayout()
-                ->createBlock('faq/adminhtml_item')   // alias bloków = faq
+                ->createBlock('faq/adminhtml_catalog_category')
                 ->setCategoryId((int)$category->getId())
                 ->toHtml(),
-            'after'   => 'features' // albo 'general' – jak chcesz
+            'after'   => 'features'
         ));
     }
-
 
 }

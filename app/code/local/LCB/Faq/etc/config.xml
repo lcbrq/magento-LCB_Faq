@@ -48,19 +48,21 @@
                     <category>
                         <table>lcb_faq_category</table>
                     </category>
-                    <item>
-                        <table>lcb_faq_item</table>
-                    </item>
+                    <catalog_category>
+                        <table>lcb_faq_catalog_category</table>
+                    </catalog_category>
                 </entities>
             </faq_resource>
         </models>
         <resources>
             <lcb_faq_setup>
-                 <setup>
+                <setup>
                     <module>LCB_Faq</module>
                     <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
-                <connection><use>core_setup</use></connection>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
             </lcb_faq_setup>
             <faq_write>
                 <connection>
@@ -103,14 +105,14 @@
             </updates>
         </layout>
         <events>
-        <adminhtml_catalog_category_tabs>
-            <observers>
-            <lcb_faq_add_grid_tab>
-                <class>faq/observer</class>
-                <method>addFaqGridTab</method>
-            </lcb_faq_add_grid_tab>
-            </observers>
-        </adminhtml_catalog_category_tabs>
+            <adminhtml_catalog_category_tabs>
+                <observers>
+                    <lcb_faq_add_grid_tab>
+                        <class>faq/observer</class>
+                        <method>addFaqGridTab</method>
+                    </lcb_faq_add_grid_tab>
+                </observers>
+            </adminhtml_catalog_category_tabs>
         </events>
         <translate>
             <modules>

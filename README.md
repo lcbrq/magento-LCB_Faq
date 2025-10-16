@@ -4,7 +4,7 @@ Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore suppo
 
 ## [1.8.0]
 
-- Add FAQ section
+- Add FAQ management to catalog categories
 
 ## [1.7.3]
 
