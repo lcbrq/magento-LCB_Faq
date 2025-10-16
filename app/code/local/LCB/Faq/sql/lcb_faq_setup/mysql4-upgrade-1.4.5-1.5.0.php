@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Add FAQ QA url feature
  */

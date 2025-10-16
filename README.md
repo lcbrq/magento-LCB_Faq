@@ -2,6 +2,10 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
+## [1.8.0]
+
+- Add FAQ section
+
 ## [1.7.3]
 
 - Fix categories display in single store mode usage and minor adjustments
@@ -67,7 +71,7 @@ Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore suppo
 
 ## [1.2.1]
 
-### Added 
+### Added
 
 - Identifier and active columns to FAQ categories
 - Form key validation standard
