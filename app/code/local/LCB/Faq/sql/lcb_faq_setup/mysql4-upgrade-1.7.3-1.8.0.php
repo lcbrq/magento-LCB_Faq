@@ -1,5 +1,7 @@
 <?php
-
+/** @var Mage_Core_Model_Resource_Setup $installer */
+$installer = $this;
+$installer->startSetup();
 $table = $installer->getTable('faq/item');
 $installer->run("
 CREATE TABLE IF NOT EXISTS `{$table}` (
