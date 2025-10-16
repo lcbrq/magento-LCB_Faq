@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Add FAQ set position feature
  */

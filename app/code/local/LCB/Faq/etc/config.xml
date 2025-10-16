@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LCB_Faq>
-            <version>1.7.3</version>
+            <version>1.8.0</version>
         </LCB_Faq>
     </modules>
     <frontend>
@@ -41,13 +41,16 @@
             </faq>
             <faq_resource>
                 <class>LCB_Faq_Model_Resource</class>
-                <entities>		  
+                <entities>
                     <faq>
                         <table>lcb_faq</table>
                     </faq>
                     <category>
                         <table>lcb_faq_category</table>
                     </category>
+                    <catalog_category>
+                        <table>lcb_faq_catalog_category</table>
+                    </catalog_category>
                 </entities>
             </faq_resource>
         </models>
@@ -55,6 +58,7 @@
             <lcb_faq_setup>
                 <setup>
                     <module>LCB_Faq</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
                 <connection>
                     <use>core_setup</use>
@@ -100,6 +104,16 @@
                 </faq>
             </updates>
         </layout>
+        <events>
+            <adminhtml_catalog_category_tabs>
+                <observers>
+                    <lcb_faq_add_grid_tab>
+                        <class>faq/observer</class>
+                        <method>addFaqGridTab</method>
+                    </lcb_faq_add_grid_tab>
+                </observers>
+            </adminhtml_catalog_category_tabs>
+        </events>
         <translate>
             <modules>
                 <lcb_faq>
@@ -121,8 +135,8 @@
         </web>
         <faq>
             <general>
-                <visibility_groups>0</visibility_groups>  
+                <visibility_groups>0</visibility_groups>
             </general>
         </faq>
     </default>
-</config> 
+</config>
