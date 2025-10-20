@@ -9,30 +9,38 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category extends Mage_Adminhtml_Block_Widg
         $this->_blockGroup = 'faq';
         $this->_controller = 'adminhtml_catalog_category';
         $this->_headerText = Mage::helper('adminhtml')->__('FAQ');
-
         parent::__construct();
         $this->_removeButton('add');
     }
-
     protected function _prepareLayout()
     {
         $categoryId = $this->getCategoryId();
-
         $this->setChild(
             'grid',
             $this->getLayout()->createBlock('faq/adminhtml_catalog_category_grid')
                 ->setCategoryId($categoryId)
         );
+        $gridId = 'lcb_catalog_category_faq_grid';
 
+        $this->_addButton('mass_delete', array(
+            'id' => 'lcb-mass-delete',
+            'label'   => 'Delete Selected',
+            'class'   => 'delete',
+            'onclick' => "return LCBFAQ_delete('{$gridId}', '" .
+                $this->getUrl('adminhtml/catalogCategoryFaq/massDelete', array('category_id' => $categoryId)) .
+            "', " . (int)$categoryId . ");"
+        ));
         $this->_addButton('add', array(
-            'label'   => Mage::helper('adminhtml')->__('Add'),
+            'label'   => 'Add New',
             'class'   => 'add',
-            'onclick' => "setLocation('" . $this->getUrl('adminhtml/catalogCategoryFaq/new', array('category_id' => $categoryId)) . "')"
+            'onclick' => "setLocation('" . $this->getUrl(
+                'adminhtml/catalogCategoryFaq/new',
+                array('category_id' => $categoryId)
+            ) . "')"
         ));
 
         return parent::_prepareLayout();
     }
-
     /**
      * @param int $id
      * @return $this
@@ -42,7 +50,6 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category extends Mage_Adminhtml_Block_Widg
         $this->_categoryId = (int)$id;
         return $this;
     }
-
     /**
      * @return int
      */
@@ -60,7 +67,6 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category extends Mage_Adminhtml_Block_Widg
         if (!$id = (int)Mage::app()->getRequest()->getParam('category_id')) {
             $id = (int)Mage::app()->getRequest()->getParam('id');
         }
-
         return $id;
     }
 }

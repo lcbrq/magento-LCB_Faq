@@ -1,0 +1,8 @@
+#lcb_catalog_category_faq_grid_massaction,
+#lcb_catalog_category_faq_grid .massaction {
+	display: none !important;
+	visibility: hidden !important;
+}
+.content-header .form-buttons #lcb-mass-delete {
+	margin-right: 8px !important;
+}
