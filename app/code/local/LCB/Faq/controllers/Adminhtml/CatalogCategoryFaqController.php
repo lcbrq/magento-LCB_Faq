@@ -68,7 +68,6 @@ class LCB_Faq_Adminhtml_CatalogCategoryFaqController extends Mage_Adminhtml_Cont
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
         }
-
         return $this->_redirectReferer();
     }
 
@@ -88,7 +87,6 @@ class LCB_Faq_Adminhtml_CatalogCategoryFaqController extends Mage_Adminhtml_Cont
         } catch (Exception $e) {
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
         }
-
         $storeId = (int)$this->getRequest()->getParam('store');
 
         return $this->_redirect('adminhtml/catalog_category/edit', array(
@@ -97,5 +95,34 @@ class LCB_Faq_Adminhtml_CatalogCategoryFaqController extends Mage_Adminhtml_Cont
             'active_tab' => 'category_info_tabs_lcb_faq_items',
         ));
     }
+    public function massDeleteAction()
+    {
+        $ids = $this->getRequest()->getParam('ids', array());
+        if (!is_array($ids) || empty($ids)) {
+            Mage::getSingleton('adminhtml/session')->addError($this->__('No items selected.'));
+            return $this->_redirectReferer();
+        }
 
+        try {
+            $count = 0;
+            foreach ($ids as $id) {
+                Mage::getModel('faq/catalog_category')->setId((int)$id)->delete();
+                $count++;
+            }
+            Mage::getSingleton('adminhtml/session')->addSuccess(
+                $this->__('%d item(s) have been deleted.', $count)
+            );
+        } catch (Exception $e) {
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+        }
+
+        $categoryId = (int)$this->getRequest()->getParam('category_id');
+        $storeId    = (int)$this->getRequest()->getParam('store');
+
+        return $this->_redirect('adminhtml/catalog_category/edit', array(
+            'id'         => $categoryId ?: null,
+            'store'      => $storeId,
+            'active_tab' => 'category_info_tabs_lcb_faq_items',
+        ));
+    }
 }
