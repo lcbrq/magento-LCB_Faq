@@ -9,10 +9,10 @@
  */
 class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Controller_Action
 {
-    protected function _isAllowed()
-    {
-        return Mage::getSingleton('admin/session')->isAllowed('cms/faq/categories');
-    }
+    /**
+     * @inheritDoc
+     */
+    public const ADMIN_RESOURCE = 'cms/faq/categories';
 
     protected function _initAction()
     {

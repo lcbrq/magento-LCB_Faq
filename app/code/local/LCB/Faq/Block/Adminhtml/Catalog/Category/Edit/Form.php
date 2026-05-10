@@ -60,5 +60,4 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Edit_Form extends Mage_Adminhtml_
 
         return parent::_prepareForm();
     }
-
 }

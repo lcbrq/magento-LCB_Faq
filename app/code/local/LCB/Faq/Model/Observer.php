@@ -25,5 +25,4 @@ class LCB_Faq_Model_Observer
             'after'   => 'features'
         ));
     }
-
 }

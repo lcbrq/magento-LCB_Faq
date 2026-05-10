@@ -111,5 +111,4 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
 
         return 0;
     }
-
 }

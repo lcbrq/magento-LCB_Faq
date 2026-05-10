@@ -97,5 +97,4 @@ class LCB_Faq_Adminhtml_CatalogCategoryFaqController extends Mage_Adminhtml_Cont
             'active_tab' => 'category_info_tabs_lcb_faq_items',
         ));
     }
-
 }

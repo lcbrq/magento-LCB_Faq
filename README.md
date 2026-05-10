@@ -2,6 +2,10 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
+## [1.8.1]
+
+- Fix compatibility issues with OpenMage 20.0.17
+
 ## [1.8.0]
 
 - Add FAQ management to catalog categories
