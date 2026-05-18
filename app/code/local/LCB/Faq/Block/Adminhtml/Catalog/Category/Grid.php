@@ -28,6 +28,7 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
 
         return parent::_prepareCollection();
     }
+
     protected function _prepareColumns()
     {
         $categoryId = $this->_getCategoryId();
@@ -118,5 +119,23 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
             'adminhtml/catalogCategoryFaq/grid',
             array('_current' => true, 'category_id' => $this->_getCategoryId())
         );
+    }
+
+    protected function _getCategoryId()
+    {
+        if (!empty($this->_categoryId)) {
+            return (int)$this->_categoryId;
+        }
+
+        if ($id = (int)$this->getRequest()->getParam('category_id')) {
+            return $id;
+        }
+
+        $category = Mage::registry('current_category');
+        if ($category && $category->getId()) {
+            return (int) $category->getId();
+        }
+
+        return 0;
     }
 }
