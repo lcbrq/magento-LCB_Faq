@@ -24,11 +24,11 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
         $categoryId = $this->_getCategoryId();
         $collection = Mage::getModel('faq/catalog_category')->getCollection()
             ->addFieldToFilter('category_id', $categoryId);
-
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
     }
+
     protected function _prepareColumns()
     {
         $categoryId = $this->_getCategoryId();
@@ -51,19 +51,19 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
         ));
 
         $this->addColumn('is_active', array(
-            'header' => Mage::helper('faq')->__('Włącz'),
+            'header' => Mage::helper('faq')->__('Enabled'),
             'index' => 'is_active','type' => 'options',
             'options' => Mage::getModel('adminhtml/system_config_source_yesno')->toArray(),
         ));
 
         $this->addColumn('action', array(
-            'header' =>  Mage::helper('faq')->__('Akcje'),
+            'header' =>  Mage::helper('faq')->__('Action'),
             'width' => '120px',
             'type' => 'action',
             'getter' => 'getId',
             'actions' => array(
                 array(
-                    'caption' =>  Mage::helper('faq')->__('Edytuj'),
+                    'caption' =>  Mage::helper('faq')->__('Edit'),
                     'url'    => array(
                         'base' => 'adminhtml/catalogCategoryFaq/edit',
                         'params' => array('category_id' => $categoryId)
@@ -71,21 +71,33 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
                     'field'  => 'id'
                 ),
                 array(
-                    'caption' =>  Mage::helper('faq')->__('Usuń'),
+                    'caption' =>  Mage::helper('faq')->__('Delete'),
                     'url'    => array('base' => 'adminhtml/catalogCategoryFaq/delete','params' => array('category_id' => $categoryId)),
                     'field'  => 'id',
-                    'confirm' =>  Mage::helper('faq')->__('Usunąć wpis?')
+                    'confirm' =>  Mage::helper('faq')->__('Delete entry?')
                 ),
             ),
             'filter' => false,'sortable' => false,'is_system' => true
         ));
-
         return parent::_prepareColumns();
     }
 
-    /**
-     * @return string
-     */
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('entity_id');
+        $mass = $this->getMassactionBlock();
+        $mass->setFormFieldName('ids');
+        $mass->setUseSelectAll(true);
+        $mass->addItem('delete', array(
+            'label'   => 'Delete Selected',
+            'url'     => $this->getUrl('adminhtml/catalogCategoryFaq/massDelete', array(
+                'category_id' => $this->_getCategoryId(),
+            )),
+            'confirm' => 'Delete selected entries?',
+        ));
+        return $this;
+    }
+
     public function getGridUrl()
     {
         return $this->getUrl(

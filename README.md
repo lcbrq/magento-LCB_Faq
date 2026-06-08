@@ -2,7 +2,11 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
-## [1.8.1]
+## 1.8.3
+
+- Fix issue with category management
+
+## [1.8.1][1.8.2]
 
 - Fix compatibility issues with OpenMage 20.0.17
 

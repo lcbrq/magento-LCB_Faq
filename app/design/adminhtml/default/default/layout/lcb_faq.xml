@@ -25,4 +25,18 @@
             <block type="faq/adminhtml_category" name="faq_categories" />
         </reference>
     </adminhtml_adminfaqcategories_index>
+    
+    <adminhtml_catalog_category_edit>
+    <reference name="head">
+        <action method="addJs"><file>lcb/faq.js</file></action>
+        <action method="addCss"><stylesheet>css/lcb/faq.css</stylesheet></action>
+    </reference>
+    </adminhtml_catalog_category_edit>
+
+    <adminhtml_catalog_category_index>
+        <reference name="head">
+            <action method="addJs"><file>lcb/faq.js</file></action>
+            <action method="addCss"><stylesheet>css/lcb/faq.css</stylesheet></action>
+        </reference>
+    </adminhtml_catalog_category_index>
 </layout>
