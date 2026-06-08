@@ -81,23 +81,7 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
         ));
         return parent::_prepareColumns();
     }
-    /**
-     * @return string
-     */
-    protected function _getCategoryId()
-    {
-        if (!empty($this->_categoryId)) {
-            return (int)$this->_categoryId;
-        }
-        if ($id = (int)$this->getRequest()->getParam('category_id')) {
-            return $id;
-        }
-        $category = Mage::registry('current_category');
-        if ($category && $category->getId()) {
-            return (int) $category->getId();
-        }
-        return 0;
-    }
+
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('entity_id');
@@ -113,6 +97,7 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category_Grid extends Mage_Adminhtml_Block
         ));
         return $this;
     }
+
     public function getGridUrl()
     {
         return $this->getUrl(
