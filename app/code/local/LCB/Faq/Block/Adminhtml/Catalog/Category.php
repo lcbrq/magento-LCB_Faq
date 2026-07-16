@@ -8,10 +8,11 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category extends Mage_Adminhtml_Block_Widg
     {
         $this->_blockGroup = 'faq';
         $this->_controller = 'adminhtml_catalog_category';
-        $this->_headerText = Mage::helper('adminhtml')->__('FAQ');
+
         parent::__construct();
         $this->_removeButton('add');
     }
+
     protected function _prepareLayout()
     {
         $categoryId = $this->getCategoryId();
@@ -41,6 +42,20 @@ class LCB_Faq_Block_Adminhtml_Catalog_Category extends Mage_Adminhtml_Block_Widg
 
         return parent::_prepareLayout();
     }
+
+    /**
+     * @return string
+     */
+    public function getHeaderHtml()
+    {
+        if ($category = Mage::registry('current_category')) {
+            return $category->getName();
+        }
+
+        return '';
+    }
+
+
     /**
      * @param int $id
      * @return $this

@@ -2,6 +2,10 @@
 
 Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support
 
+## 1.8.4
+
+- Fix issue with admin category heading
+
 ## 1.8.3
 
 - Fix issue with category management
