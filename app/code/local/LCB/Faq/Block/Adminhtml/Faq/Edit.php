@@ -15,11 +15,11 @@ class LCB_Faq_Block_Adminhtml_Faq_Edit extends Mage_Adminhtml_Block_Widget_Form_
         $this->_objectId = "id";
         $this->_blockGroup = "faq";
         $this->_controller = "adminhtml_faq";
-        $this->_updateButton("save", "label", Mage::helper("faq")->__("Save Item"));
-        $this->_updateButton("delete", "label", Mage::helper("faq")->__("Delete Item"));
+        $this->_updateButton("save", "label", Mage::helper("faq")->__("Save"));
+        $this->_updateButton("delete", "label", Mage::helper("faq")->__("Delete"));
 
         $this->_addButton("saveandcontinue", array(
-            "label" => Mage::helper("faq")->__("Save And Continue Edit"),
+            "label" => Mage::helper("faq")->__("Save and Continue Edit"),
             "onclick" => "saveAndContinueEdit()",
             "class" => "save",
                 ), -100);

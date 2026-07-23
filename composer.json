@@ -1,8 +1,8 @@
 {
     "name": "lcbrq/magento-lcb_faq",
-    "description": "Frequently Asked Questions plugin for Magento with multistore support",
+    "description": "Frequently Asked Questions plugin for Magento 1 / OpenMage with multistore support",
     "type": "magento-module",
-    "version": "1.8.4",
+    "version": "1.8.5",
     "license": "MIT",
     "require": {},
     "extra": {

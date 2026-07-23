@@ -19,7 +19,7 @@ class LCB_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_
         $this->_updateButton("delete", "label", Mage::helper("faq")->__("Delete Category"));
 
         $this->_addButton("saveandcontinue", array(
-            "label" => Mage::helper("faq")->__("Save And Continue Edit"),
+            "label" => Mage::helper("faq")->__("Save and Continue Edit"),
             "onclick" => "saveAndContinueEdit()",
             "class" => "save",
                 ), -100);

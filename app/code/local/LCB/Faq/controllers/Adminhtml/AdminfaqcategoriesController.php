@@ -16,14 +16,14 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
 
     protected function _initAction()
     {
-        $this->loadLayout()->_setActiveMenu("faq/faq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faq  Manager"), Mage::helper("adminhtml")->__("Faq Manager"));
+        $this->loadLayout()->_setActiveMenu('cms/faq/categories')->_addBreadcrumb(Mage::helper('adminhtml')->__('FAQ Categories'), Mage::helper("adminhtml")->__('FAQ Categories'));
         return $this;
     }
 
     public function indexAction()
     {
-        $this->_title($this->__("Faq"));
-        $this->_title($this->__("Manager Faq"));
+        $this->_title($this->__("FAQ"));
+        $this->_title($this->__("FAQ Categories"));
 
         $this->_initAction();
         $this->renderLayout();
@@ -31,9 +31,9 @@ class LCB_Faq_Adminhtml_AdminfaqcategoriesController extends Mage_Adminhtml_Cont
 
     public function editAction()
     {
-        $this->_title($this->__("Faq"));
-        $this->_title($this->__("Faq"));
-        $this->_title($this->__("Edit Item"));
+        $this->_title($this->__("FAQ"));
+        $this->_title($this->__("FAQ"));
+        $this->_title($this->__("Edit"));
 
         $id = $this->getRequest()->getParam("id");
         $model = Mage::getModel("faq/category")->load($id);
